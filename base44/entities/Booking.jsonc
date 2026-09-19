@@ -1,0 +1,59 @@
+{
+  "name": "Booking",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "session_type": {
+      "type": "string",
+      "enum": [
+        "intro_15min",
+        "full_setup",
+        "custom"
+      ],
+      "description": "Type of consultation session"
+    },
+    "preferred_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "preferred_time": {
+      "type": "string"
+    },
+    "exchange_platform": {
+      "type": "string",
+      "description": "Exchange they use (Binance, Luno, etc)"
+    },
+    "has_tangem": {
+      "type": "boolean",
+      "default": false
+    },
+    "notes": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed",
+        "completed",
+        "cancelled"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "phone",
+    "session_type"
+  ]
+}

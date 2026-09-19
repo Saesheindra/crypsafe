@@ -1,0 +1,74 @@
+{
+  "name": "ForumThread",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Thread title"
+    },
+    "content": {
+      "type": "string",
+      "description": "Thread content/question"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "general",
+        "tangem",
+        "onekey",
+        "ledger",
+        "keystone",
+        "security",
+        "setup",
+        "troubleshooting"
+      ],
+      "default": "general",
+      "description": "Thread category"
+    },
+    "author_name": {
+      "type": "string",
+      "description": "Author's name"
+    },
+    "author_email": {
+      "type": "string",
+      "description": "Author's email"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "locked",
+        "deleted"
+      ],
+      "default": "pending",
+      "description": "Thread status"
+    },
+    "pinned": {
+      "type": "boolean",
+      "default": false,
+      "description": "Pinned to top"
+    },
+    "views": {
+      "type": "number",
+      "default": 0,
+      "description": "View count"
+    },
+    "reply_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of replies"
+    },
+    "last_activity": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last activity timestamp"
+    }
+  },
+  "required": [
+    "title",
+    "content",
+    "author_name",
+    "category"
+  ]
+}
