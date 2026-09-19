@@ -134,6 +134,27 @@ const STATIC_PRODUCTS = [
     features: ["NFC technology", "No battery needed", "1 backup card", "Compact design"]
   },
   {
+    id: "tangem-3-card-sundrop",
+    name: "Tangem Wallet (3-Card Set) - Sun Drop Limited Edition",
+    description: "Premium 3-card backup set in vibrant Sun Drop color. Warm golden and yellow tones that radiate confidence. Each set includes 3 NFC cards that work together.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    popular: true,
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+  },
+  {
+    id: "tangem-3-card-ring-combo",
+    name: "Tangem 3-Card + Ring Combo Set",
+    description: "Ultimate Tangem bundle with 3-card wallet and matching ring. Complete NFC security solution with wearable convenience.",
+    price: 350,
+    stock: 8,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/ring_silver.png?v=1714047915&width=600",
+    features: ["3 backup cards + Ring", "NFC technology", "Wearable option", "Top security EAL6+ certified"]
+  },
+  {
     id: "tangem-ring",
     name: "Tangem Ring (Ring Edition)",
     description: "Wearable crypto wallet in ring form. Sign transactions with a tap of your finger.",
@@ -159,8 +180,8 @@ const STATIC_PRODUCTS = [
     id: "ledger-nano-x",
     name: "Ledger Nano X",
     description: "Bluetooth-enabled hardware wallet for mobile use. Manage crypto on the go.",
-    price: 579,
-    stock: 0,
+    price: 999,
+    stock: 5,
     category: "ledger",
     image_url: "https://shop.ledger.com/cdn/shop/products/nano-x-front.png?v=1684138004&width=600",
     features: ["Bluetooth connectivity", "Larger screen", "Battery powered", "Mobile compatible"]
@@ -169,8 +190,8 @@ const STATIC_PRODUCTS = [
     id: "ledger-flex",
     name: "Ledger Flex",
     description: "Next-gen hardware wallet with E Ink touchscreen. Premium security meets modern design.",
-    price: 779,
-    stock: 0,
+    price: 1266,
+    stock: 5,
     category: "ledger",
     popular: true,
     image_url: "https://shop.ledger.com/cdn/shop/files/Ledger_Flex_Black_Front_800x800_crop_center.png?v=1716294988&width=600",
@@ -180,8 +201,8 @@ const STATIC_PRODUCTS = [
     id: "ledger-stax",
     name: "Ledger Stax",
     description: "Revolutionary curved E Ink display wallet. Designed by Tony Fadell.",
-    price: 1119,
-    stock: 0,
+    price: 779,
+    stock: 5,
     category: "ledger",
     image_url: "https://shop.ledger.com/cdn/shop/files/Stax_Front_Black_crop_center.png?v=1699618437&width=600",
     features: ["Curved E Ink display", "Wireless charging", "Magnetic accessories", "Tony Fadell design"]

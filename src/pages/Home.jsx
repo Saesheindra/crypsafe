@@ -14,7 +14,6 @@ import {
 
 import LiveCryptoPrices from "../components/home/LiveCryptoPrices";
 import WhyChooseTangem from "../components/tangem/WhyChooseTangem";
-import { base44 } from "@/api/base44Client";
 
 const features = [
   {
@@ -223,7 +222,7 @@ export default function Home() {
               </div>
             </div>
             <a
-              href={base44.agents.getWhatsAppConnectURL('crypto_security_advisor')}
+              href="https://base44.app/api/apps/68f88f2cb7165a70a22ee871/agents/crypto_security_advisor/whatsapp"
               target="_blank"
               rel="noopener noreferrer"
             >
