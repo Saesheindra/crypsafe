@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingCart, CheckCircle, Star, Package, Bot, ShoppingBag, Shield, Users, MessageCircle, Play, Gift, Loader2, CreditCard } from "lucide-react";
+import { ShoppingCart, CheckCircle, Star, Package, Bot, ShoppingBag, Shield, Users, MessageCircle, Play, Gift, CreditCard } from "lucide-react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "react-router-dom";
@@ -16,6 +14,212 @@ import { Checkbox } from "@/components/ui/checkbox";
 import ShoppingCartComponent from "../components/shop/ShoppingCart"; // Renamed to avoid conflict with lucide-react icon
 import ProductFilters from "../components/shop/ProductFilters";
 
+// Static product data - sourced from crypsafe.com.my
+const STATIC_PRODUCTS = [
+  // Keystone Products
+  {
+    id: "keystone-3-pro",
+    name: "Keystone 3 Pro",
+    description: "Air-gapped hardware wallet with a 4-inch touchscreen and fingerprint sensor. Supports 5500+ cryptocurrencies.",
+    price: 500,
+    stock: 10,
+    category: "keystone",
+    popular: true,
+    image_url: "https://keyst.one/cdn/shop/files/K3_1.png?v=1701920936&width=600",
+    features: ["4-inch touchscreen", "Fingerprint unlock", "Air-gapped security", "5500+ coins supported"]
+  },
+  {
+    id: "keystone-tablet",
+    name: "Keystone Tablet",
+    description: "Indestructible steel seed phrase backup. Fire and water resistant up to 1399°C.",
+    price: 199,
+    stock: 15,
+    category: "keystone",
+    image_url: "https://keyst.one/cdn/shop/products/KeystoneTablet.png?v=1663310123&width=600",
+    features: ["Fire resistant (1399°C)", "Waterproof", "304 stainless steel", "BIP39 compatible"]
+  },
+  {
+    id: "keystone-tablet-plus",
+    name: "Keystone Tablet Plus",
+    description: "Premium steel backup with individual letter slots. Maximum security for your seed phrase.",
+    price: 280,
+    stock: 10,
+    category: "keystone",
+    popular: true,
+    image_url: "https://keyst.one/cdn/shop/products/TabletPlus_1.png?v=1665999418&width=600",
+    features: ["Individual letter slots", "17 tamper-proof screws", "Fire & water resistant", "Maximum durability"]
+  },
+  // OneKey Products
+  {
+    id: "onekey-classic-1s-pure",
+    name: "OneKey Classic 1S Pure",
+    description: "Premium hardware wallet with OLED display. Compact design with secure element chip.",
+    price: 310,
+    stock: 8,
+    category: "onekey",
+    image_url: "https://onekey.so/_next/image?url=https%3A%2F%2Fonekey-asset.com%2Fupload%2Fimages%2F2024%2F09%2F19%2F8vc9qbjn_onekey-classic-1s-pure.png&w=640&q=75",
+    features: ["OLED display", "Secure element chip", "USB-C connection", "Multi-crypto support"]
+  },
+  {
+    id: "onekey-classic-1s",
+    name: "OneKey Classic 1S",
+    description: "Advanced hardware wallet with color display. Supports thousands of cryptocurrencies.",
+    price: 400,
+    stock: 5,
+    category: "onekey",
+    image_url: "https://onekey.so/_next/image?url=https%3A%2F%2Fonekey-asset.com%2Fupload%2Fimages%2F2024%2F06%2F19%2Fd6vhyflg_onekey-classic-1s.png&w=640&q=75",
+    features: ["Color display", "Bluetooth connectivity", "Secure element", "Open source firmware"]
+  },
+  {
+    id: "onekey-pro-black",
+    name: "OneKey Pro (Black)",
+    description: "Flagship hardware wallet with biometric authentication and large touchscreen display.",
+    price: 1100,
+    stock: 3,
+    category: "onekey",
+    popular: true,
+    image_url: "https://onekey.so/_next/image?url=https%3A%2F%2Fonekey-asset.com%2Fupload%2Fimages%2F2024%2F06%2F19%2F1ww9cpqd_onekey-pro-black.png&w=640&q=75",
+    features: ["Fingerprint unlock", "3.5-inch touchscreen", "Air-gapped security", "Premium build quality"]
+  },
+  {
+    id: "onekey-pro-white",
+    name: "OneKey Pro (White)",
+    description: "Flagship hardware wallet with biometric authentication and large touchscreen display.",
+    price: 1100,
+    stock: 3,
+    category: "onekey",
+    image_url: "https://onekey.so/_next/image?url=https%3A%2F%2Fonekey-asset.com%2Fupload%2Fimages%2F2024%2F06%2F19%2Fef5jn9vd_onekey-pro-white.png&w=640&q=75",
+    features: ["Fingerprint unlock", "3.5-inch touchscreen", "Air-gapped security", "Premium build quality"]
+  },
+  // Tangem Products
+  {
+    id: "tangem-3-card-black",
+    name: "Tangem Wallet 3-Card Set (Black)",
+    description: "NFC-powered crypto wallet cards. No batteries, no charging. Just tap to sign transactions.",
+    price: 350,
+    stock: 20,
+    category: "tangem",
+    popular: true,
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["NFC technology", "No battery needed", "Backup cards included", "25-year lifespan"]
+  },
+  {
+    id: "tangem-3-card-white",
+    name: "Tangem Wallet 3-Card Set (White)",
+    description: "NFC-powered crypto wallet cards. No batteries, no charging. Just tap to sign transactions.",
+    price: 350,
+    stock: 15,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["NFC technology", "No battery needed", "Backup cards included", "25-year lifespan"]
+  },
+  {
+    id: "tangem-3-card-orange",
+    name: "Tangem Wallet 3-Card Set (Orange)",
+    description: "NFC-powered crypto wallet cards. No batteries, no charging. Just tap to sign transactions.",
+    price: 350,
+    stock: 12,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["NFC technology", "No battery needed", "Backup cards included", "25-year lifespan"]
+  },
+  {
+    id: "tangem-2-card",
+    name: "Tangem Wallet 2-Card Set",
+    description: "Compact NFC wallet set with one backup card. Perfect for everyday crypto transactions.",
+    price: 290,
+    stock: 25,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_2_card_en.png?v=1699356965&width=600",
+    features: ["NFC technology", "No battery needed", "1 backup card", "Compact design"]
+  },
+  {
+    id: "tangem-ring",
+    name: "Tangem Ring (Ring Edition)",
+    description: "Wearable crypto wallet in ring form. Sign transactions with a tap of your finger.",
+    price: 0,
+    stock: 0,
+    category: "tangem",
+    popular: true,
+    image_url: "https://shop.tangem.com/cdn/shop/files/ring_silver.png?v=1714047915&width=600",
+    features: ["Wearable design", "NFC technology", "Waterproof", "Titanium construction"]
+  },
+  // Ledger Products (Affiliate)
+  {
+    id: "ledger-nano-s-plus",
+    name: "Ledger Nano S Plus",
+    description: "Entry-level hardware wallet with secure element. Perfect for beginners.",
+    price: 279,
+    stock: 0,
+    category: "ledger",
+    image_url: "https://shop.ledger.com/cdn/shop/products/nano-s-plus-front.png?v=1684137958&width=600",
+    features: ["Secure element chip", "USB-C", "5000+ coins", "Ledger Live app"]
+  },
+  {
+    id: "ledger-nano-x",
+    name: "Ledger Nano X",
+    description: "Bluetooth-enabled hardware wallet for mobile use. Manage crypto on the go.",
+    price: 579,
+    stock: 0,
+    category: "ledger",
+    image_url: "https://shop.ledger.com/cdn/shop/products/nano-x-front.png?v=1684138004&width=600",
+    features: ["Bluetooth connectivity", "Larger screen", "Battery powered", "Mobile compatible"]
+  },
+  {
+    id: "ledger-flex",
+    name: "Ledger Flex",
+    description: "Next-gen hardware wallet with E Ink touchscreen. Premium security meets modern design.",
+    price: 779,
+    stock: 0,
+    category: "ledger",
+    popular: true,
+    image_url: "https://shop.ledger.com/cdn/shop/files/Ledger_Flex_Black_Front_800x800_crop_center.png?v=1716294988&width=600",
+    features: ["E Ink touchscreen", "Secure element", "Wireless charging", "Premium build"]
+  },
+  {
+    id: "ledger-stax",
+    name: "Ledger Stax",
+    description: "Revolutionary curved E Ink display wallet. Designed by Tony Fadell.",
+    price: 1119,
+    stock: 0,
+    category: "ledger",
+    image_url: "https://shop.ledger.com/cdn/shop/files/Stax_Front_Black_crop_center.png?v=1699618437&width=600",
+    features: ["Curved E Ink display", "Wireless charging", "Magnetic accessories", "Tony Fadell design"]
+  },
+  {
+    id: "ledger-gen5",
+    name: "Ledger Gen5",
+    description: "Latest generation Ledger device with advanced security features.",
+    price: 2037,
+    stock: 0,
+    category: "ledger",
+    image_url: "https://shop.ledger.com/cdn/shop/files/Stax_Front_Black_crop_center.png?v=1699618437&width=600",
+    features: ["Latest security", "Enhanced display", "Premium materials", "Future-proof"]
+  },
+  // Bundle Packages
+  {
+    id: "bundle-tangem-keystone",
+    name: "Tangem + Keystone Tablet Bundle",
+    description: "Complete security package: Tangem 3-Card wallet + Keystone Tablet steel backup.",
+    price: 529,
+    stock: 8,
+    category: "bundle",
+    popular: true,
+    image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
+    features: ["Tangem 3-Card Set", "Keystone Tablet", "Complete protection", "Save RM 20"]
+  },
+  {
+    id: "bundle-tangem-keystone-plus",
+    name: "Tangem + Keystone Tablet Plus Bundle",
+    description: "Premium security package: Tangem 3-Card wallet + Keystone Tablet Plus steel backup.",
+    price: 600,
+    stock: 5,
+    category: "bundle",
+    image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
+    features: ["Tangem 3-Card Set", "Keystone Tablet Plus", "Maximum security", "Save RM 30"]
+  }
+];
+
 // ProductCard component for individual product display, including variants and stock management
 const ProductCard = ({ product, onPaymentSuccess, index, handleLedgerClick, addToCart }) => {
   // State to manage the currently selected variant
@@ -26,8 +230,6 @@ const ProductCard = ({ product, onPaymentSuccess, index, handleLedgerClick, addT
 
 
 
-  // Add payment loading state
-  const [isCreatingCheckout, setIsCreatingCheckout] = React.useState(false);
 
   // Find the selected variant object
   const selectedVariant = product.variants ? product.variants.find(v => v.id === selectedVariantId) : null;
@@ -95,29 +297,9 @@ const ProductCard = ({ product, onPaymentSuccess, index, handleLedgerClick, addT
   const isOutOfStock = currentStock <= 0;
 
   const handleStripeCheckout = async () => {
-    setIsCreatingCheckout(true);
-    try {
-      const { data } = await base44.functions.invoke('createStripeCheckout', {
-        product_name: totalDescription,
-        product_description: currentProductDescription,
-        amount: totalPrice,
-        currency: 'myr',
-        metadata: {
-          product_id: product.id,
-          variant_id: selectedVariantId || ''
-        }
-      });
-
-      if (data.checkout_url) {
-        window.location.href = data.checkout_url;
-      } else {
-        throw new Error('No checkout URL received');
-      }
-    } catch (error) {
-      console.error('Stripe checkout error:', error);
-      alert('Failed to create checkout session. Please try WhatsApp order or contact support.');
-      setIsCreatingCheckout(false);
-    }
+    // For now, redirect to WhatsApp order since Stripe requires backend
+    const message = encodeURIComponent(`Hi! I'd like to purchase: ${currentProductName} (RM ${currentPrice.toFixed(2)}) - Card Payment`);
+    window.open(`https://wa.me/601166736549?text=${message}`, '_blank');
   };
 
   const handleOrderClick = () => {
@@ -289,19 +471,10 @@ const ProductCard = ({ product, onPaymentSuccess, index, handleLedgerClick, addT
                   onClick={handleStripeCheckout}
                   variant="outline"
                   className="w-full border-2 border-[#6366f1] text-[#6366f1] hover:bg-[#6366f1] hover:text-white font-bold py-3"
-                  disabled={isOutOfStock || isCreatingCheckout}
+                  disabled={isOutOfStock}
                 >
-                  {isCreatingCheckout ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Processing...
-                    </>
-                  ) : (
-                    <>
-                      <CreditCard className="w-4 h-4 mr-2" />
-                      Buy Now
-                    </>
-                  )}
+                  <CreditCard className="w-4 h-4 mr-2" />
+                  Buy Now
                 </Button>
                 <Button
                   onClick={handleOrderClick}
@@ -413,17 +586,16 @@ export default function Shop() {
     }
   };
 
-  const { data: products, isLoading } = useQuery({
-    queryKey: ['products'],
-    queryFn: () => base44.entities.Product.list('-created_date'),
-    initialData: [],
-  });
+  // Use static products data instead of API fetch
+  const products = STATIC_PRODUCTS;
+  const isLoading = false;
 
   const categories = [
     { id: "all", label: "All Products" },
     { id: "tangem", label: "Tangem Wallets" },
+    { id: "onekey", label: "OneKey Wallets" },
+    { id: "keystone", label: "Keystone Products" },
     { id: "ledger", label: "Ledger Wallets" },
-    { id: "keystone", label: "Steel Backups" },
     { id: "bundle", label: "Bundle Packages" }
   ];
 
@@ -480,11 +652,10 @@ export default function Shop() {
     window.open('https://shop.ledger.com/?r=36f598aa14f9', '_blank');
   };
 
-  // Function to send context to WhatsApp agent
+  // Function to send context to WhatsApp
   const openWhatsAppWithContext = (context) => {
-    const agentUrl = base44.agents.getWhatsAppConnectURL('purchase_assistant');
-    // Open agent URL - the greeting will provide full assistance
-    window.open(agentUrl, '_blank');
+    const message = encodeURIComponent("Hi! I'm interested in your crypto hardware wallets. Can you help me choose the right one?");
+    window.open(`https://wa.me/601166736549?text=${message}`, '_blank');
   };
 
   return (
