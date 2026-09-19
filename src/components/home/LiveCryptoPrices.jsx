@@ -13,19 +13,31 @@ const assetConfig = [
 ];
 
 export default function LiveCryptoPrices() {
-  const [prices, setPrices] = useState({});
-  const [loading, setLoading] = useState(true);
+  // Initialize with default prices so cards always show
+  const defaultPrices = assetConfig.reduce((acc, asset) => {
+    acc[asset.id] = {
+      id: asset.id,
+      current_price_usd: 0,
+      price_change_percentage_24h: 0,
+      market_cap_usd: 'N/A'
+    };
+    return acc;
+  }, {});
+
+  const [prices, setPrices] = useState(defaultPrices);
+  const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(null);
 
   const fetchPrices = async (isRefresh = false) => {
     if (isRefresh) setRefreshing(true);
-    else setLoading(true);
 
     try {
       const results = await Promise.all(
         assetConfig.map(a =>
-          fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${a.binance}`).then(r => r.json())
+          fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${a.binance}`)
+            .then(r => r.json())
+            .catch(() => ({ lastPrice: '0', priceChangePercent: '0' }))
         )
       );
 
@@ -33,8 +45,8 @@ export default function LiveCryptoPrices() {
       assetConfig.forEach((asset, i) => {
         newPrices[asset.id] = {
           id: asset.id,
-          current_price_usd: parseFloat(results[i].lastPrice),
-          price_change_percentage_24h: parseFloat(results[i].priceChangePercent),
+          current_price_usd: parseFloat(results[i].lastPrice) || 0,
+          price_change_percentage_24h: parseFloat(results[i].priceChangePercent) || 0,
           market_cap_usd: 'N/A'
         };
       });
@@ -43,6 +55,17 @@ export default function LiveCryptoPrices() {
       setLastUpdate(new Date());
     } catch (error) {
       console.error("Error fetching prices:", error);
+      // Set default prices on error
+      const defaultPrices = {};
+      assetConfig.forEach((asset) => {
+        defaultPrices[asset.id] = {
+          id: asset.id,
+          current_price_usd: 0,
+          price_change_percentage_24h: 0,
+          market_cap_usd: 'N/A'
+        };
+      });
+      setPrices(defaultPrices);
     }
 
     setLoading(false);
