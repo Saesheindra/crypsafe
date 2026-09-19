@@ -165,6 +165,56 @@ const STATIC_PRODUCTS = [
     image_url: "https://shop.tangem.com/cdn/shop/files/ring_silver.png?v=1714047915&width=600",
     features: ["Wearable design", "NFC technology", "Waterproof", "Titanium construction"]
   },
+  {
+    id: "tangem-3-card-electra-sea",
+    name: "Tangem Wallet (3-Card Set) - Electra Sea Limited Edition",
+    description: "Premium 3-card set in stunning Electra Sea color. Deep blue ocean-inspired tones. Each set includes 3 NFC cards for ultimate backup security.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+  },
+  {
+    id: "tangem-3-card-spring-bloom",
+    name: "Tangem Wallet (3-Card Set) - Spring Bloom Limited Edition",
+    description: "Premium 3-card set in fresh Spring Bloom color. Vibrant floral-inspired pastels. Each set includes 3 NFC cards for ultimate backup security.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+  },
+  {
+    id: "tangem-3-card-stealth",
+    name: "Tangem Wallet (3-Card Set) - Stealth",
+    description: "Premium 3-card set in sleek Stealth color. All-black matte finish for maximum discretion. Each set includes 3 NFC cards for ultimate backup security.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["Stealth matte black", "3 backup cards included", "NFC technology", "No seed phrases"]
+  },
+  {
+    id: "tangem-3-card-blush-sky",
+    name: "Tangem Wallet (3-Card Set) - Blush Sky Limited Edition",
+    description: "Premium 3-card set in elegant Blush Sky color. Soft pink and sky blue gradient tones. Each set includes 3 NFC cards for ultimate backup security.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+  },
+  {
+    id: "tangem-3-card-hyperblue",
+    name: "Tangem Wallet (3-Card Set) - Hyperblue Limited Edition",
+    description: "Premium 3-card set in vibrant Hyperblue color. Electric blue finish that stands out. Each set includes 3 NFC cards for ultimate backup security.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
+    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+  },
   // Ledger Products (Affiliate)
   {
     id: "ledger-nano-s-plus",
@@ -177,45 +227,45 @@ const STATIC_PRODUCTS = [
     features: ["Secure element chip", "USB-C", "5000+ coins", "Ledger Live app"]
   },
   {
-    id: "ledger-nano-x",
-    name: "Ledger Nano X",
-    description: "Bluetooth-enabled hardware wallet for mobile use. Manage crypto on the go.",
+    id: "ledger-nano-gen5",
+    name: "Ledger Nano Gen5",
+    description: "Latest generation Ledger with monochrome E Ink touchscreen and Bluetooth connectivity.",
     price: 999,
     stock: 5,
     category: "ledger",
     image_url: "https://shop.ledger.com/cdn/shop/products/nano-x-front.png?v=1684138004&width=600",
-    features: ["Bluetooth connectivity", "Larger screen", "Battery powered", "Mobile compatible"]
+    features: ["Monochrome E Ink touchscreen", "Scratch-resistant glass", "Bluetooth BLE 5.2", "iOS & Android compatible"]
   },
   {
     id: "ledger-flex",
     name: "Ledger Flex",
-    description: "Next-gen hardware wallet with E Ink touchscreen. Premium security meets modern design.",
+    description: "Mid-range E Ink touchscreen wallet - perfect balance of features and affordability.",
     price: 1266,
     stock: 5,
     category: "ledger",
     popular: true,
     image_url: "https://shop.ledger.com/cdn/shop/files/Ledger_Flex_Black_Front_800x800_crop_center.png?v=1716294988&width=600",
-    features: ["E Ink touchscreen", "Secure element", "Wireless charging", "Premium build"]
+    features: ["E Ink touchscreen display", "USB-C connectivity", "More affordable than Stax", "Premium build"]
+  },
+  {
+    id: "ledger-nano-x",
+    name: "Ledger Nano X",
+    description: "Premium Bluetooth hardware wallet with large screen and mobile app support. Manage 100+ apps simultaneously.",
+    price: 779,
+    stock: 5,
+    category: "ledger",
+    image_url: "https://shop.ledger.com/cdn/shop/products/nano-x-front.png?v=1684138004&width=600",
+    features: ["Bluetooth connectivity for mobile", "Manage 100+ crypto apps", "USB-C charging", "Mobile compatible"]
   },
   {
     id: "ledger-stax",
     name: "Ledger Stax",
-    description: "Revolutionary curved E Ink display wallet. Designed by Tony Fadell.",
-    price: 779,
+    description: "Next-gen hardware wallet with E Ink touchscreen. Designed by iPod creator Tony Fadell.",
+    price: 2037,
     stock: 5,
     category: "ledger",
     image_url: "https://shop.ledger.com/cdn/shop/files/Stax_Front_Black_crop_center.png?v=1699618437&width=600",
-    features: ["Curved E Ink display", "Wireless charging", "Magnetic accessories", "Tony Fadell design"]
-  },
-  {
-    id: "ledger-gen5",
-    name: "Ledger Gen5",
-    description: "Latest generation Ledger device with advanced security features.",
-    price: 2037,
-    stock: 0,
-    category: "ledger",
-    image_url: "https://shop.ledger.com/cdn/shop/files/Stax_Front_Black_crop_center.png?v=1699618437&width=600",
-    features: ["Latest security", "Enhanced display", "Premium materials", "Future-proof"]
+    features: ["E Ink curved touchscreen", "Wireless charging with Qi", "Bluetooth and USB-C", "Tony Fadell design"]
   },
   // Bundle Packages
   {
