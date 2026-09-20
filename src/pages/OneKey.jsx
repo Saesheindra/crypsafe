@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingCart, CheckCircle, Star, Package, Shield, Code, Globe, Zap, MessageCircle, Loader2, CreditCard, Play } from "lucide-react";
+import { ShoppingCart, CheckCircle, Star, Package, Shield, Code, Globe, Zap, MessageCircle, Play } from "lucide-react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import ShoppingCartComponent from "../components/shop/ShoppingCart";
@@ -106,8 +106,6 @@ const ProductCard = ({ product, index, addToCart }) => {
   const [selectedVariantId, setSelectedVariantId] = useState(() => {
     return product.variants && product.variants.length > 0 ? product.variants[0].id : null;
   });
-
-  const [isCreatingCheckout, setIsCreatingCheckout] = React.useState(false);
 
   const selectedVariant = product.variants ? product.variants.find(v => v.id === selectedVariantId) : null;
 
@@ -220,24 +218,6 @@ const ProductCard = ({ product, index, addToCart }) => {
               >
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Add to Cart
-              </Button>
-              <Button
-                onClick={handleStripeCheckout}
-                variant="outline"
-                className="w-full border-2 border-[#6366f1] text-[#6366f1] hover:bg-[#6366f1] hover:text-white font-bold py-3"
-                disabled={isOutOfStock || isCreatingCheckout}
-              >
-                {isCreatingCheckout ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Processing...
-                  </>
-                ) : (
-                  <>
-                    <CreditCard className="w-4 h-4 mr-2" />
-                    Buy Now
-                  </>
-                )}
               </Button>
               <Button
                 onClick={handleOrderClick}

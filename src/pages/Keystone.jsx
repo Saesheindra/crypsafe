@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, CheckCircle, ShoppingCart, Flame, Droplet, Zap, Package, MessageCircle, AlertTriangle, CreditCard, Loader2, Play, Lock, Globe, Clock } from "lucide-react";
+import { Shield, CheckCircle, ShoppingCart, Flame, Droplet, Zap, Package, MessageCircle, AlertTriangle, Play, Lock, Globe, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "react-router-dom";
@@ -124,7 +124,6 @@ const KEYSTONE_PRODUCTS = [
 ];
 
 export default function Keystone() {
-  const [isCreatingCheckout, setIsCreatingCheckout] = React.useState({});
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -473,24 +472,6 @@ export default function Keystone() {
                           >
                             <ShoppingCart className="w-5 h-5 mr-2" />
                             Add to Cart
-                          </Button>
-                          <Button
-                            onClick={() => handleStripeCheckout(product)}
-                            variant="outline"
-                            className="w-full border-2 border-[#6366f1] text-[#6366f1] hover:bg-[#6366f1] hover:text-white font-bold py-3"
-                            disabled={(product.stock ?? 0) <= 0 || isCreatingCheckout[product.id]}
-                          >
-                            {isCreatingCheckout[product.id] ? (
-                              <>
-                                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                Processing...
-                              </>
-                            ) : (
-                              <>
-                                <CreditCard className="w-5 h-5 mr-2" />
-                                Buy Now
-                              </>
-                            )}
                           </Button>
                           <Button
                             onClick={() => handleOrderClick(product)}
