@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 import WhyChooseTangem from "../components/tangem/WhyChooseTangem";
-import { base44 } from "@/api/base44Client";
 
 const sessionTypes = [
   {
@@ -68,8 +67,7 @@ export default function Booking() {
   };
 
   const openWhatsAppAgent = () => {
-    const agentUrl = base44.agents.getWhatsAppConnectURL('purchase_assistant');
-    window.open(agentUrl, '_blank');
+    window.open('https://wa.me/601166736549?text=Hi!%20I%20have%20a%20question%20about%20your%20products.', '_blank');
   };
 
   return (

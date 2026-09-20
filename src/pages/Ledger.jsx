@@ -1,6 +1,4 @@
 import React from "react";
-import { base44 } from "@/api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -73,19 +71,6 @@ const getLedgerProductImage = (product) => {
 };
 
 export default function Ledger() {
-  const { data: products = [], isLoading } = useQuery({
-    queryKey: ['ledger-products'],
-    queryFn: async () => {
-      try {
-        const result = await base44.entities.Product.filter({ category: "ledger" }, '-created_date');
-        return Array.isArray(result) ? result : [];
-      } catch (error) {
-        console.error('Failed to fetch Ledger products:', error);
-        return [];
-      }
-    },
-  });
-
   const handleLedgerClick = () => {
     window.open('https://shop.ledger.com/?r=36f598aa14f9', '_blank');
   };

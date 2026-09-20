@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -129,31 +127,6 @@ const ProductCard = ({ product, index, addToCart }) => {
 
   const isOutOfStock = currentStock <= 0;
 
-  const handleStripeCheckout = async () => {
-    setIsCreatingCheckout(true);
-    try {
-      const { data } = await base44.functions.invoke('createStripeCheckout', {
-        product_name: currentProductName,
-        product_description: currentProductDescription,
-        amount: currentPrice,
-        currency: 'myr',
-        metadata: {
-          product_id: product.id,
-          variant_id: selectedVariantId || ''
-        }
-      });
-
-      if (data.checkout_url) {
-        window.location.href = data.checkout_url;
-      } else {
-        throw new Error('No checkout URL received');
-      }
-    } catch (error) {
-      console.error('Stripe checkout error:', error);
-      alert('Failed to create checkout session. Please try WhatsApp order or contact support.');
-      setIsCreatingCheckout(false);
-    }
-  };
 
   const handleOrderClick = () => {
     const message = encodeURIComponent(`Hi! I'd like to order: ${currentProductName} (RM ${currentPrice.toFixed(2)})`);
@@ -362,18 +335,9 @@ export default function OneKey() {
     }
   };
 
-  const { data: products = [], isLoading } = useQuery({
-    queryKey: ['onekey-products'],
-    queryFn: async () => {
-      try {
-        const result = await base44.entities.Product.filter({ category: 'onekey' });
-        return Array.isArray(result) ? result : [];
-      } catch (error) {
-        console.error('Failed to fetch OneKey products:', error);
-        return [];
-      }
-    },
-  });
+  // Use hardcoded products
+  const products = ONEKEY_PRODUCTS;
+  const isLoading = false;
 
   return (
     <div className="container mx-auto px-4 py-12">

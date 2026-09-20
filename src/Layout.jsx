@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/sheet";
 
 import Logo from "./components/branding/Logo";
-import { base44 } from "@/api/base44Client";
 
 const navigationItems = [
   { title: "Home", url: createPageUrl("Home"), icon: Shield },
@@ -29,10 +28,6 @@ export default function Layout({ children, currentPageName }) {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [user, setUser] = React.useState(null);
-
-  React.useEffect(() => {
-    base44.auth.me().then(setUser).catch(() => setUser(null));
-  }, []);
 
   // Google Ads Tag
   React.useEffect(() => {

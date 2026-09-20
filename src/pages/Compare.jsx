@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,22 +8,50 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
+// Static products for comparison
+const COMPARE_PRODUCTS = [
+  {
+    id: "tangem-3-card-black",
+    name: "Tangem Wallet (3-Card Set)",
+    price: 350,
+    stock: 20,
+    category: "tangem",
+    image_url: "https://i.imgur.com/DWlY7YJ.png",
+    features: ["No seed phrases", "NFC tap technology", "3 backup cards included", "EAL6+ certified", "Mobile app control"]
+  },
+  {
+    id: "onekey-classic-1s",
+    name: "OneKey Classic 1S",
+    price: 400,
+    stock: 5,
+    category: "onekey",
+    image_url: "https://i.imgur.com/J0NoiXJ.jpeg",
+    features: ["EAL 6+ Secure Element", "Bluetooth & USB-C", "Open-source", "Multi-chain support", "Security Key function"]
+  },
+  {
+    id: "onekey-pro-black",
+    name: "OneKey Pro",
+    price: 1100,
+    stock: 3,
+    category: "onekey",
+    image_url: "https://i.imgur.com/5aN1PSF.png",
+    features: ["3.5\" touchscreen", "Air-gapped signing", "Fingerprint sensor", "EAL 6+ chip", "Premium design"]
+  },
+  {
+    id: "keystone-3-pro",
+    name: "Keystone 3 Pro",
+    price: 500,
+    stock: 5,
+    category: "keystone",
+    image_url: "https://media.base44.com/images/public/68f88f2cb7165a70a22ee871/e7ca46336_Screenshot2026-09-07211819.png",
+    features: ["Triple secure element chips", "4-inch touchscreen", "100% air-gapped", "QR code transactions", "PCI anti-tamper"]
+  }
+];
 
 export default function Compare() {
   const [selectedProducts, setSelectedProducts] = useState([]);
-
-  const { data: products = [], isLoading: productsLoading } = useQuery({
-    queryKey: ['compare-products'],
-    queryFn: async () => {
-      try {
-        const result = await base44.entities.Product.list('-created_date');
-        return Array.isArray(result) ? result : [];
-      } catch (error) {
-        console.error('Failed to fetch products for comparison:', error);
-        return [];
-      }
-    },
-  });
+  const products = COMPARE_PRODUCTS;
+  const productsLoading = false;
 
 
 

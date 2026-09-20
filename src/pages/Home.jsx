@@ -222,7 +222,7 @@ export default function Home() {
               </div>
             </div>
             <a
-              href="https://base44.app/api/apps/68f88f2cb7165a70a22ee871/agents/crypto_security_advisor/whatsapp"
+              href="https://wa.me/601166736549?text=Hi!%20I%20need%20help%20choosing%20a%20crypto%20wallet.%20Can%20you%20give%20me%20some%20recommendations?"
               target="_blank"
               rel="noopener noreferrer"
             >

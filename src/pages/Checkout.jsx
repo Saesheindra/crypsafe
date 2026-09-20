@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,8 +12,6 @@ export default function Checkout() {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const [cart, setCart] = useState([]);
-  const [isGuest, setIsGuest] = useState(false);
-  const [user, setUser] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
   // Customer Info
@@ -33,20 +30,9 @@ export default function Checkout() {
   });
 
   // Payment Method
-  const [paymentMethod, setPaymentMethod] = useState("stripe");
+  const [paymentMethod, setPaymentMethod] = useState("whatsapp");
 
   useEffect(() => {
-    base44.auth.me().then(u => {
-      setUser(u);
-      if (u) {
-        setCustomerInfo({
-          name: u.full_name || "",
-          email: u.email || "",
-          phone: ""
-        });
-      }
-    }).catch(() => setUser(null));
-
     const savedCart = localStorage.getItem('crypsafe_cart');
     if (savedCart) {
       try {
@@ -69,35 +55,9 @@ export default function Checkout() {
     return shippingInfo.address && shippingInfo.city && shippingInfo.state && shippingInfo.postcode;
   };
 
-  const handleStripeCheckout = async () => {
-    setIsProcessing(true);
-    try {
-      const items = cart.map(item => ({
-        name: item.name,
-        price: item.price,
-        quantity: item.quantity
-      }));
-
-      const { data } = await base44.functions.invoke('createStripeCheckout', {
-        items,
-        customer_info: customerInfo,
-        shipping_info: shippingInfo,
-        total_amount: total
-      });
-
-      if (data.checkout_url) {
-        window.location.href = data.checkout_url;
-      }
-    } catch (error) {
-      console.error('Checkout error:', error);
-      alert('Failed to process checkout. Please try again.');
-      setIsProcessing(false);
-    }
-  };
-
-  const handleBNPLCheckout = () => {
+  const handleWhatsAppOrder = () => {
     const message = encodeURIComponent(
-      `Hi! I'd like to complete my order with Buy Now, Pay Later:\n\n` +
+      `Hi! I'd like to place an order:\n\n` +
       `Items:\n${cart.map(item => `- ${item.name} x${item.quantity} = RM ${(item.price * item.quantity).toFixed(2)}`).join('\n')}\n\n` +
       `Total: RM ${total.toFixed(2)}\n\n` +
       `Name: ${customerInfo.name}\n` +
@@ -109,22 +69,7 @@ export default function Checkout() {
   };
 
   const handlePlaceOrder = () => {
-    if (paymentMethod === 'stripe') {
-      handleStripeCheckout();
-    } else if (paymentMethod === 'bnpl') {
-      handleBNPLCheckout();
-    } else {
-      const message = encodeURIComponent(
-        `Hi! I'd like to complete my order:\n\n` +
-        `Items:\n${cart.map(item => `- ${item.name} x${item.quantity} = RM ${(item.price * item.quantity).toFixed(2)}`).join('\n')}\n\n` +
-        `Total: RM ${total.toFixed(2)}\n\n` +
-        `Name: ${customerInfo.name}\n` +
-        `Email: ${customerInfo.email}\n` +
-        `Phone: ${customerInfo.phone}\n\n` +
-        `Shipping Address:\n${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state} ${shippingInfo.postcode}`
-      );
-      window.open(`https://wa.me/601166736549?text=${message}`, '_blank');
-    }
+    handleWhatsAppOrder();
   };
 
   if (cart.length === 0) {
@@ -198,19 +143,6 @@ export default function Checkout() {
                   <CardTitle className="text-2xl text-white">Customer Information</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  {!user && (
-                    <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/30">
-                      <p className="text-blue-300 text-sm mb-3">Have an account? Sign in for faster checkout</p>
-                      <div className="flex gap-3">
-                        <Button onClick={() => base44.auth.redirectToLogin(window.location.href)} variant="outline" className="border-blue-500 text-blue-400">
-                          Sign In
-                        </Button>
-                        <Button onClick={() => setIsGuest(true)} className="bg-[#00ffc6] hover:bg-[#00d9a8] text-[#071018]">
-                          Continue as Guest
-                        </Button>
-                      </div>
-                    </div>
-                  )}
 
                   <div className="space-y-4">
                     <div>
@@ -333,52 +265,18 @@ export default function Checkout() {
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-3">
-                    <div
-                      onClick={() => setPaymentMethod('stripe')}
-                      className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                        paymentMethod === 'stripe' ? 'border-[#6366f1] bg-[#6366f1]/10' : 'border-[#00ffc6]/20 hover:border-[#00ffc6]/50'
-                      }`}
-                    >
+                    <div className="p-4 rounded-lg border-2 border-[#25D366] bg-[#25D366]/10">
                       <div className="flex items-center gap-3">
-                        <div className={`w-4 h-4 rounded-full border-2 ${paymentMethod === 'stripe' ? 'bg-[#6366f1] border-[#6366f1]' : 'border-[#00ffc6]'}`} />
-                        <div className="flex-1">
-                          <h4 className="font-bold text-white">Card / FPX (Stripe)</h4>
-                          <p className="text-sm text-[#bfeee0]">Pay securely with credit/debit card or online banking</p>
-                        </div>
-                        <CreditCard className="w-6 h-6 text-[#6366f1]" />
-                      </div>
-                    </div>
-
-                    <div
-                      onClick={() => setPaymentMethod('bnpl')}
-                      className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                        paymentMethod === 'bnpl' ? 'border-purple-500 bg-purple-500/10' : 'border-[#00ffc6]/20 hover:border-[#00ffc6]/50'
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-4 h-4 rounded-full border-2 ${paymentMethod === 'bnpl' ? 'bg-purple-500 border-purple-500' : 'border-[#00ffc6]'}`} />
-                        <div className="flex-1">
-                          <h4 className="font-bold text-white">Buy Now, Pay Later</h4>
-                          <p className="text-sm text-[#bfeee0]">Split your payment into installments via WhatsApp</p>
-                        </div>
-                        <Badge className="bg-purple-500/20 text-purple-400">Flexible</Badge>
-                      </div>
-                    </div>
-
-                    <div
-                      onClick={() => setPaymentMethod('whatsapp')}
-                      className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                        paymentMethod === 'whatsapp' ? 'border-[#25D366] bg-[#25D366]/10' : 'border-[#00ffc6]/20 hover:border-[#00ffc6]/50'
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-4 h-4 rounded-full border-2 ${paymentMethod === 'whatsapp' ? 'bg-[#25D366] border-[#25D366]' : 'border-[#00ffc6]'}`} />
+                        <div className="w-4 h-4 rounded-full bg-[#25D366] border-2 border-[#25D366]" />
                         <div className="flex-1">
                           <h4 className="font-bold text-white">WhatsApp Order</h4>
                           <p className="text-sm text-[#bfeee0]">Complete your order via WhatsApp with personal assistance</p>
                         </div>
                       </div>
                     </div>
+                    <p className="text-sm text-[#bfeee0] text-center">
+                      Click "Place Order" to send your order details via WhatsApp. Our team will assist you with payment options.
+                    </p>
                   </div>
 
                   <div className="flex gap-3">

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
-import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -130,18 +128,9 @@ export default function Keystone() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
 
-  const { data: products = [], isLoading } = useQuery({
-    queryKey: ['keystone-products'],
-    queryFn: async () => {
-      try {
-        const result = await base44.entities.Product.filter({ category: 'keystone' });
-        return Array.isArray(result) ? result : [];
-      } catch (error) {
-        console.error('Failed to fetch Keystone products:', error);
-        return [];
-      }
-    },
-  });
+  // Use hardcoded products
+  const products = KEYSTONE_PRODUCTS;
+  const isLoading = false;
 
   // Load cart from localStorage
   useEffect(() => {
@@ -226,31 +215,6 @@ export default function Keystone() {
     }
   };
 
-  const handleStripeCheckout = async (product) => {
-    setIsCreatingCheckout(prev => ({ ...prev, [product.id]: true }));
-    try {
-      const { data } = await base44.functions.invoke('createStripeCheckout', {
-        product_name: product.name,
-        product_description: product.description,
-        amount: product.price,
-        currency: 'myr',
-        metadata: {
-          product_id: product.id,
-          category: 'keystone'
-        }
-      });
-
-      if (data.checkout_url) {
-        window.location.href = data.checkout_url;
-      } else {
-        throw new Error('No checkout URL received');
-      }
-    } catch (error) {
-      console.error('Stripe checkout error:', error);
-      alert('Failed to create checkout session. Please try WhatsApp order or contact support.');
-      setIsCreatingCheckout(prev => ({ ...prev, [product.id]: false }));
-    }
-  };
 
   const handleOrderClick = (product) => {
     const message = encodeURIComponent(`Hi! I'd like to order: ${product.name} (RM ${product.price?.toFixed(2)})`);

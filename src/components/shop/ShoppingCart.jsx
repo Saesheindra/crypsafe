@@ -2,73 +2,25 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ShoppingCart as CartIcon, X, Plus, Minus, Trash2, CreditCard, MessageCircle, Loader2, QrCode } from "lucide-react";
-import { base44 } from "@/api/base44Client";
-import QRPaymentModal from "./QRPaymentModal";
+import { ShoppingCart as CartIcon, X, Plus, Minus, Trash2, CreditCard, MessageCircle, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
 export default function ShoppingCart({ cart, updateQuantity, removeFromCart, clearCart, isOpen, setIsOpen }) {
-  const [isCreatingCheckout, setIsCreatingCheckout] = React.useState(false);
-  const [qrPaymentOpen, setQrPaymentOpen] = React.useState(false);
-
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const finalTotal = subtotal;
 
-  const handleStripeCheckout = async () => {
-    if (cart.length === 0) return;
-
-    setIsCreatingCheckout(true);
-    try {
-      // Prepare line items for Stripe
-      const items = cart.map(item => ({
-        product_name: item.name,
-        product_description: item.description,
-        price: item.price,
-        quantity: item.quantity
-      }));
-
-      const { data } = await base44.functions.invoke('createStripeCheckout', {
-        items: items,
-        amount: subtotal,
-        currency: 'myr',
-        metadata: {
-          cart_items: JSON.stringify(cart.map(item => ({
-            id: item.id,
-            name: item.name,
-            quantity: item.quantity,
-            price: item.price
-          })))
-        }
-      });
-
-      if (data.checkout_url) {
-        window.location.href = data.checkout_url;
-      } else {
-        throw new Error('No checkout URL received');
-      }
-    } catch (error) {
-      console.error('Stripe checkout error:', error);
-      alert('Failed to create checkout session. Please try WhatsApp order or contact support.');
-      setIsCreatingCheckout(false);
-    }
-  };
-
   const handleWhatsAppOrder = () => {
-    const itemsList = cart.map(item => 
+    const itemsList = cart.map(item =>
       `${item.name} (RM ${item.price.toFixed(2)}) x ${item.quantity}`
     ).join('\n');
-    
+
     const message = encodeURIComponent(
       `Hi! I'd like to order:\n\n${itemsList}\n\nSubtotal: RM ${subtotal.toFixed(2)}`
     );
-    
-    window.open(`https://wa.me/601166736549?text=${message}`, '_blank');
-  };
 
-  const handleQRPayment = () => {
-    setQrPaymentOpen(true);
+    window.open(`https://wa.me/601166736549?text=${message}`, '_blank');
   };
 
   return (
@@ -183,7 +135,7 @@ export default function ShoppingCart({ cart, updateQuantity, removeFromCart, cle
                 <div className="space-y-2 pt-2">
                   <Link to={createPageUrl("Checkout")}>
                     <Button
-                      className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] hover:from-[#5558e3] hover:to-[#7c3aed] text-white font-bold py-6 text-base"
+                      className="w-full bg-gradient-to-r from-[#00ffc6] to-[#00d9a8] hover:from-[#00d9a8] hover:to-[#00ffc6] text-[#071018] font-bold py-6 text-base"
                     >
                       <CreditCard className="w-5 h-5 mr-2" />
                       Proceed to Checkout
@@ -191,20 +143,12 @@ export default function ShoppingCart({ cart, updateQuantity, removeFromCart, cle
                   </Link>
 
                   <Button
-                    onClick={handleQRPayment}
-                    className="w-full bg-gradient-to-r from-[#00ffc6] to-[#00d9a8] hover:from-[#00d9a8] hover:to-[#00ffc6] text-[#071018] font-bold py-6 text-base"
-                  >
-                    <QrCode className="w-5 h-5 mr-2" />
-                    Pay with QR Code
-                  </Button>
-
-                  <Button
                     onClick={handleWhatsAppOrder}
                     variant="outline"
                     className="w-full border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-bold py-6 text-base"
                   >
                     <MessageCircle className="w-5 h-5 mr-2" />
-                    Order via WhatsApp
+                    Quick Order via WhatsApp
                   </Button>
                 </div>
 
@@ -220,14 +164,6 @@ export default function ShoppingCart({ cart, updateQuantity, removeFromCart, cle
           )}
         </SheetContent>
       </Sheet>
-
-      {/* QR Payment Modal */}
-      <QRPaymentModal
-        isOpen={qrPaymentOpen}
-        onClose={() => setQrPaymentOpen(false)}
-        cart={cart}
-        totalAmount={subtotal}
-      />
     </>
   );
 }

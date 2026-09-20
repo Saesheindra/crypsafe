@@ -1,10 +1,8 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Shield, CreditCard, Banknote, MessageCircle, CheckCircle, Lock, Clock, Link as LinkIcon, Zap, Bot, ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
-import { base44 } from "@/api/base44Client";
 import ShippingInfo from "../components/shop/ShippingInfo";
 
 const paymentMethods = [
@@ -128,7 +126,7 @@ export default function Payment() {
             <h3 className="text-xl font-bold mb-1">Need Help with Your Purchase?</h3>
             <p className="text-[#c6fff0] text-sm">Chat with our AI assistant for instant guidance on products and payments</p>
           </div>
-          <a href={base44.agents.getWhatsAppConnectURL('purchase_assistant')} target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/601166736549?text=Hi!%20I%20have%20a%20question%20about%20payment%20options." target="_blank" rel="noopener noreferrer">
             <Button className="bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold px-6 py-3">
               <Bot className="w-5 h-5 mr-2" />
               Chat with AI Assistant
