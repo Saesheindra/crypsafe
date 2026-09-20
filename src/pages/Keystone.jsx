@@ -80,7 +80,7 @@ const KEYSTONE_PRODUCTS = [
     price: 500,
     stock: 5,
     popular: false,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_keystone-3-pro.png",
+    image_url: "https://i.imgur.com/8QR8rHd.png",
     features: [
       "4-inch IPS touchscreen display",
       "Triple secure element chips (EAL5+)",
@@ -96,7 +96,7 @@ const KEYSTONE_PRODUCTS = [
     price: 199,
     stock: 10,
     popular: false,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_keystone-tablet.png",
+    image_url: "https://i.imgur.com/wL5HJXK.png",
     features: [
       "304 stainless steel construction",
       "Fire resistant up to 1399°C",
@@ -112,7 +112,7 @@ const KEYSTONE_PRODUCTS = [
     price: 280,
     stock: 8,
     popular: true,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_keystone-tablet-plus.png",
+    image_url: "https://i.imgur.com/dZrJP0L.png",
     features: [
       "Premium 304 stainless steel",
       "Enhanced engraving system",

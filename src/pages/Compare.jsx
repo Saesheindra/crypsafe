@@ -43,7 +43,7 @@ const COMPARE_PRODUCTS = [
     price: 500,
     stock: 5,
     category: "keystone",
-    image_url: "https://media.base44.com/images/public/68f88f2cb7165a70a22ee871/e7ca46336_Screenshot2026-09-07211819.png",
+    image_url: "https://i.imgur.com/8QR8rHd.png",
     features: ["Triple secure element chips", "4-inch touchscreen", "100% air-gapped", "QR code transactions", "PCI anti-tamper"]
   }
 ];

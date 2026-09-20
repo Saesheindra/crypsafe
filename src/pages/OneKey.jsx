@@ -51,7 +51,7 @@ const ONEKEY_PRODUCTS = [
     price: 310,
     stock: 10,
     popular: false,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_onekeyclassic1s.jpg",
+    image_url: "https://i.imgur.com/KzoBv6J.png",
     features: [
       "EAL 6+ Secure Element Chip",
       "Bluetooth & USB-C connectivity",
@@ -65,7 +65,7 @@ const ONEKEY_PRODUCTS = [
     price: 1100,
     stock: 5,
     popular: false,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_onekey-pro-white.png",
+    image_url: "https://i.imgur.com/Eeq97cA.png",
     features: [
       "EAL 6+ Secure Element Chip",
       "Air-gapped Signing",
@@ -79,7 +79,7 @@ const ONEKEY_PRODUCTS = [
     price: 1100,
     stock: 5,
     popular: false,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_onekey-pro-black.png",
+    image_url: "https://i.imgur.com/5aN1PSF.png",
     features: [
       "EAL 6+ Secure Element Chip",
       "Air-gapped Signing",
@@ -93,7 +93,7 @@ const ONEKEY_PRODUCTS = [
     price: 400,
     stock: 10,
     popular: true,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_onekey-classic-1s.jpg",
+    image_url: "https://i.imgur.com/J0NoiXJ.jpeg",
     features: [
       "EAL 6+ Secure Element Chip",
       "Bluetooth & USB-C connectivity",

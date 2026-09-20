@@ -64,7 +64,7 @@ const getLedgerProductImage = (product) => {
   const name = product.name?.toLowerCase() || '';
   
   if (name.includes('flex')) {
-    return 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/138a91d0c_LEDGERFLEX_BTC_1000x1000_1.jpg';
+    return 'https://i.imgur.com/0QIR5Mv.png';
   }
   
   return null;

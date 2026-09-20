@@ -24,7 +24,7 @@ const STATIC_PRODUCTS = [
     price: 500,
     stock: 10,
     category: "keystone",
-    image_url: "https://media.base44.com/images/public/68f88f2cb7165a70a22ee871/e7ca46336_Screenshot2026-09-07211819.png",
+    image_url: "https://i.imgur.com/8QR8rHd.png",
     features: ["100% Open Source", "Air-Gapped QR Code", "4-Inch Touchscreen"]
   },
   {
@@ -78,7 +78,7 @@ const STATIC_PRODUCTS = [
     stock: 0,
     category: "tangem",
     popular: true,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/3de70dd7c_Screenshot2025-11-06225407sealimited.png",
+    image_url: "https://i.imgur.com/ygBxZNX.png",
     features: ["3 backup cards included - lose 1, still have 2", "Electra Sea color - vibrant turquoise and electric blue", "No seed phrases to write down or remember"]
   },
   // Row 4: Spring Bloom | Stealth
@@ -136,7 +136,7 @@ const STATIC_PRODUCTS = [
     stock: 10,
     category: "tangem",
     popular: true,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/1e15818a4_Screenshot2025-11-06225427limblue.png",
+    image_url: "https://i.imgur.com/kWV9cNL.png",
     features: ["3 backup cards included - lose 1, still have 2", "Winter Collection color - silver and icy blue design", "NFC tap technology - works with any smartphone"]
   },
   {
