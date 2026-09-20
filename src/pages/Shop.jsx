@@ -623,9 +623,8 @@ export default function Shop() {
   const categories = [
     { id: "all", label: "All Products" },
     { id: "tangem", label: "Tangem Wallets" },
-    { id: "onekey", label: "OneKey Wallets" },
-    { id: "keystone", label: "Keystone Products" },
     { id: "ledger", label: "Ledger Wallets" },
+    { id: "keystone", label: "Steel Backups" },
     { id: "bundle", label: "Bundle Packages" }
   ];
 
