@@ -73,10 +73,17 @@ const getLedgerProductImage = (product) => {
 };
 
 export default function Ledger() {
-  const { data: products, isLoading } = useQuery({
+  const { data: products = [], isLoading } = useQuery({
     queryKey: ['ledger-products'],
-    queryFn: () => base44.entities.Product.filter({ category: "ledger" }, '-created_date'),
-    initialData: [],
+    queryFn: async () => {
+      try {
+        const result = await base44.entities.Product.filter({ category: "ledger" }, '-created_date');
+        return Array.isArray(result) ? result : [];
+      } catch (error) {
+        console.error('Failed to fetch Ledger products:', error);
+        return [];
+      }
+    },
   });
 
   const handleLedgerClick = () => {
@@ -225,7 +232,7 @@ export default function Ledger() {
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {products.map((product, index) => {
+          {Array.isArray(products) && products.map((product, index) => {
             const productImage = getLedgerProductImage(product);
             const isNanoSPlus = product.name?.toLowerCase().includes('nano s plus') || product.name?.toLowerCase().includes('nano s+');
             const isNanoGen5 = product.name?.toLowerCase().includes('gen5') || product.name?.toLowerCase().includes('gen 5');

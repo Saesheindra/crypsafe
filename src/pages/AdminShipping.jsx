@@ -21,10 +21,17 @@ export default function AdminShipping() {
   });
 
   // Fetch all shipments
-  const { data: shipments, isLoading: shipmentsLoading } = useQuery({
+  const { data: shipments = [], isLoading: shipmentsLoading } = useQuery({
     queryKey: ['shipments'],
-    queryFn: () => base44.entities.Shipment.list('-created_date'),
-    initialData: [],
+    queryFn: async () => {
+      try {
+        const result = await base44.entities.Shipment.list('-created_date');
+        return Array.isArray(result) ? result : [];
+      } catch (error) {
+        console.error('Failed to fetch shipments:', error);
+        return [];
+      }
+    },
   });
 
   // Send tracking email mutation
@@ -72,24 +79,25 @@ export default function AdminShipping() {
   };
 
   // Filter shipments
-  const filteredShipments = shipments.filter(shipment => {
-    const matchesSearch = searchQuery === "" || 
+  const shipmentsArray = Array.isArray(shipments) ? shipments : [];
+  const filteredShipments = shipmentsArray.filter(shipment => {
+    const matchesSearch = searchQuery === "" ||
       shipment.customer_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       shipment.order_id?.toLowerCase().includes(searchQuery.toLowerCase()) ||
       shipment.tracking_number?.toLowerCase().includes(searchQuery.toLowerCase());
-    
+
     const matchesStatus = statusFilter === "all" || shipment.status === statusFilter;
-    
+
     return matchesSearch && matchesStatus;
   });
 
   // Count by status
   const statusCounts = {
-    all: shipments.length,
-    pending_payment: shipments.filter(s => s.status === 'pending_payment').length,
-    pending: shipments.filter(s => s.status === 'pending').length,
-    in_transit: shipments.filter(s => s.status === 'in_transit').length,
-    delivered: shipments.filter(s => s.status === 'delivered').length,
+    all: shipmentsArray.length,
+    pending_payment: shipmentsArray.filter(s => s.status === 'pending_payment').length,
+    pending: shipmentsArray.filter(s => s.status === 'pending').length,
+    in_transit: shipmentsArray.filter(s => s.status === 'in_transit').length,
+    delivered: shipmentsArray.filter(s => s.status === 'delivered').length,
   };
 
   if (userLoading) {

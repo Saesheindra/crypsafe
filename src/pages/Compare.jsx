@@ -14,20 +14,27 @@ import { createPageUrl } from "@/utils";
 export default function Compare() {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
-  const { data: products, isLoading: productsLoading } = useQuery({
+  const { data: products = [], isLoading: productsLoading } = useQuery({
     queryKey: ['compare-products'],
-    queryFn: () => base44.entities.Product.list('-created_date'),
-    initialData: [],
+    queryFn: async () => {
+      try {
+        const result = await base44.entities.Product.list('-created_date');
+        return Array.isArray(result) ? result : [];
+      } catch (error) {
+        console.error('Failed to fetch products for comparison:', error);
+        return [];
+      }
+    },
   });
 
 
 
   // Filter only main wallet products (exclude accessories and variants)
-  const walletProducts = products.filter(p => 
+  const walletProducts = Array.isArray(products) ? products.filter(p =>
     ['tangem', 'onekey', 'keystone'].includes(p.category) &&
     !p.name?.toLowerCase().includes('bundle') &&
     !p.name?.toLowerCase().includes('backup')
-  );
+  ) : [];
 
   // Group products by brand
   const productsByBrand = {
@@ -47,7 +54,7 @@ export default function Compare() {
 
 
   const compareProducts = selectedProducts
-    .map(id => products.find(p => p.id === id))
+    .map(id => Array.isArray(products) ? products.find(p => p.id === id) : null)
     .filter(Boolean);
 
   const comparisonFeatures = [

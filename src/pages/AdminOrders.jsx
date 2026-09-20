@@ -23,11 +23,18 @@ export default function AdminOrders() {
         refetchInterval: 30000
     });
 
-    const { data: shipments, isLoading: loadingShipments } = useQuery({
+    const { data: shipments = [], isLoading: loadingShipments } = useQuery({
         queryKey: ['allShipments'],
-        queryFn: () => base44.entities.Shipment.list('-created_date'),
+        queryFn: async () => {
+            try {
+                const result = await base44.entities.Shipment.list('-created_date');
+                return Array.isArray(result) ? result : [];
+            } catch (error) {
+                console.error('Failed to fetch shipments:', error);
+                return [];
+            }
+        },
         enabled: user?.role === 'admin',
-        initialData: [],
         refetchInterval: 30000
     });
 
@@ -69,7 +76,8 @@ export default function AdminOrders() {
     }
 
     const stripeOrders = ordersData?.orders || [];
-    const qrOrders = shipments.filter(s => s.notes?.includes('QR Payment') || s.notes?.includes('DuitNow') || s.notes?.includes('TNG'));
+    const shipmentsArray = Array.isArray(shipments) ? shipments : [];
+    const qrOrders = shipmentsArray.filter(s => s.notes?.includes('QR Payment') || s.notes?.includes('DuitNow') || s.notes?.includes('TNG'));
     const allOrders = [...stripeOrders.map(o => ({...o, type: 'stripe'})), ...qrOrders.map(s => ({...s, type: 'qr'}))];
     const sortedAllOrders = allOrders.sort((a, b) => new Date(b.created || b.created_date) - new Date(a.created || a.created_date));
 
@@ -121,7 +129,7 @@ export default function AdminOrders() {
                             <div>
                                 <p className="text-sm text-[#bfeee0]">Pending Ship</p>
                                 <p className="text-3xl font-bold text-white">
-                                    {shipments.filter(s => s.status === 'pending').length}
+                                    {shipmentsArray.filter(s => s.status === 'pending').length}
                                 </p>
                             </div>
                             <Truck className="w-8 h-8 text-green-400" />

@@ -30,10 +30,17 @@ export default function Admin() {
   const [trackingSearch, setTrackingSearch] = useState('');
   const queryClient = useQueryClient();
 
-  const { data: shipments, isLoading } = useQuery({
+  const { data: shipments = [], isLoading } = useQuery({
     queryKey: ['shipments'],
-    queryFn: () => base44.entities.Shipment.list('-created_date'),
-    initialData: [],
+    queryFn: async () => {
+      try {
+        const result = await base44.entities.Shipment.list('-created_date');
+        return Array.isArray(result) ? result : [];
+      } catch (error) {
+        console.error('Failed to fetch shipments:', error);
+        return [];
+      }
+    },
   });
 
   const createShipmentMutation = useMutation({
@@ -256,14 +263,14 @@ export default function Admin() {
             <CardContent>
               {isLoading ? (
                 <p className="text-[#c6fff0]">Loading shipments...</p>
-              ) : shipments.length === 0 ? (
+              ) : !Array.isArray(shipments) || shipments.length === 0 ? (
                 <div className="text-center py-12">
                   <Package className="w-16 h-16 text-[#00ffc6] mx-auto mb-4 opacity-50" />
                   <p className="text-[#c6fff0]">No shipments yet. Create your first shipment!</p>
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {shipments
+                  {(Array.isArray(shipments) ? shipments : [])
                     .filter(s => !trackingSearch || s.tracking_number?.toLowerCase().includes(trackingSearch.toLowerCase()))
                     .map((shipment) => (
                     <div key={shipment.id} className="bg-[#0b2221] rounded-lg p-4 border border-[#00ffc6]/20">

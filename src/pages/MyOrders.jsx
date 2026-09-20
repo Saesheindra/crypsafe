@@ -20,17 +20,22 @@ export default function MyOrders() {
     queryFn: () => base44.auth.me(),
   });
 
-  const { data: orders, isLoading: ordersLoading } = useQuery({
+  const { data: orders = [], isLoading: ordersLoading } = useQuery({
     queryKey: ['my-orders', user?.email],
     queryFn: async () => {
       if (!user?.email) return [];
-      return await base44.entities.Shipment.filter(
-        { customer_email: user.email },
-        '-created_date'
-      );
+      try {
+        const result = await base44.entities.Shipment.filter(
+          { customer_email: user.email },
+          '-created_date'
+        );
+        return Array.isArray(result) ? result : [];
+      } catch (error) {
+        console.error('Failed to fetch orders:', error);
+        return [];
+      }
     },
     enabled: !!user?.email,
-    initialData: [],
   });
 
   const reorderMutation = useMutation({
@@ -70,9 +75,9 @@ export default function MyOrders() {
     );
   }
 
-  const filteredOrders = filterStatus === "all" 
-    ? orders 
-    : orders.filter(o => o.status === filterStatus);
+  const filteredOrders = filterStatus === "all"
+    ? (Array.isArray(orders) ? orders : [])
+    : (Array.isArray(orders) ? orders.filter(o => o.status === filterStatus) : []);
 
   const statusColors = {
     pending: "bg-yellow-500/20 text-yellow-400 border-yellow-500/50",

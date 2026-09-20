@@ -28,10 +28,17 @@ export default function AdminInventory() {
     queryFn: () => base44.auth.me(),
   });
 
-  const { data: products, isLoading: productsLoading } = useQuery({
+  const { data: products = [], isLoading: productsLoading } = useQuery({
     queryKey: ['products'],
-    queryFn: () => base44.entities.Product.list('-created_date'),
-    initialData: [],
+    queryFn: async () => {
+      try {
+        const result = await base44.entities.Product.list('-created_date');
+        return Array.isArray(result) ? result : [];
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+        return [];
+      }
+    },
   });
 
   const updateStockMutation = useMutation({
@@ -128,7 +135,7 @@ export default function AdminInventory() {
         </div>
       ) : (
         <div className="grid gap-6">
-          {products.map((product, index) => (
+          {Array.isArray(products) && products.map((product, index) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}
