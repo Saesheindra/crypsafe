@@ -237,7 +237,7 @@ const STATIC_PRODUCTS = [
     image_url: "https://i.imgur.com/mms7jCX.png",
     features: ["Wearable NFC ring", "Water-resistant", "Premium titanium"]
   },
-  // Row 11: Tangem 3-Card Black
+  // Row 11: Tangem 3-Card Black (LAST PRODUCT)
   {
     id: "tangem-3-card-black",
     name: "Tangem Wallet (3-Card Set) \"Classic Black\"",
@@ -247,60 +247,6 @@ const STATIC_PRODUCTS = [
     category: "tangem",
     image_url: "https://i.imgur.com/DWlY7YJ.png",
     features: ["Easy-to-use. No pesky buttons, cables or battery charging", "Multi-currency support Thousands of coins and tokens on 80+ networks", "Top security EAL6+ certified secure element will the cards and ring from any attack"]
-  },
-  // Remaining Keystone Products
-  {
-    id: "keystone-tablet",
-    name: "Keystone Tablet",
-    description: "Professional-grade steel seed phrase backup solution. Corrosion, fire, and water resistant storage for your crypto recovery words.",
-    price: 199,
-    stock: 15,
-    category: "keystone",
-    popular: true,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/579f4a49a_ketstonetabletimage.png",
-    features: ["Supports 12/18/24 word seed phrases", "Fire resistant up to 1399°C", "Waterproof and corrosion resistant"]
-  },
-  {
-    id: "keystone-tablet-plus",
-    name: "Keystone Tablet Plus",
-    description: "Premium steel backup solution with individual letter slots for maximum security. The ultimate seed phrase protection for serious crypto holders.",
-    price: 280,
-    stock: 10,
-    category: "keystone",
-    popular: true,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/ab8ce4ea1_ketstonetabletplusimage.png",
-    features: ["Supports 12/18/24 word seed phrases", "Individual slot for each letter (most secure)", "Fire resistant up to 1399°C"]
-  },
-  // Remaining Tangem Products
-  {
-    id: "tangem-3-card-white",
-    name: "Tangem Wallet 3-Card Set (White)",
-    description: "NFC-powered crypto wallet cards. No batteries, no charging. Just tap to sign transactions.",
-    price: 350,
-    stock: 15,
-    category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["NFC technology", "No battery needed", "Backup cards included", "25-year lifespan"]
-  },
-  {
-    id: "tangem-3-card-orange",
-    name: "Tangem Wallet 3-Card Set (Orange)",
-    description: "NFC-powered crypto wallet cards. No batteries, no charging. Just tap to sign transactions.",
-    price: 350,
-    stock: 12,
-    category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["NFC technology", "No battery needed", "Backup cards included", "25-year lifespan"]
-  },
-  {
-    id: "tangem-3-card-ring-combo",
-    name: "Tangem 3-Card + Ring Combo Set",
-    description: "Ultimate Tangem bundle with 3-card wallet and matching ring. Complete NFC security solution with wearable convenience.",
-    price: 350,
-    stock: 8,
-    category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/ring_silver.png?v=1714047915&width=600",
-    features: ["3 backup cards + Ring", "NFC technology", "Wearable option", "Top security EAL6+ certified"]
   }
 ];
 
