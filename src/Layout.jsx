@@ -238,19 +238,6 @@ export default function Layout({ children, currentPageName }) {
 
                   </>
                   )}
-                  {user && (
-                  <Link
-                  to={createPageUrl("MyOrders")}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
-                    location.pathname === createPageUrl("MyOrders")
-                      ? 'bg-[#00ffc6] text-[#071018] font-bold' 
-                      : 'text-[#bfeee0] hover:text-[#00ffc6] hover:bg-[#0b2221]'
-                  }`}
-                  >
-                  <Package className="w-4 h-4" />
-                  My Orders
-                  </Link>
-                  )}
                   <a
                   href="https://wa.me/601166736549"
                   target="_blank"
@@ -316,16 +303,6 @@ export default function Layout({ children, currentPageName }) {
                       </Link>
 
                       </>
-                      )}
-                      {user && (
-                      <Link
-                      to={createPageUrl("MyOrders")}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-[#bfeee0] hover:bg-[#0b2221] hover:text-[#00ffc6] transition-all"
-                      >
-                      <Package className="w-5 h-5" />
-                      My Orders
-                      </Link>
                       )}
                       <a
                       href="https://wa.me/601166736549"
