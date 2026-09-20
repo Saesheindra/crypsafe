@@ -127,6 +127,51 @@ const STATIC_PRODUCTS = [
     image_url: "https://i.imgur.com/BuMCY2L.png",
     features: ["3 backup cards included - lose 1, still have 2", "Vibrant Sun Drop color - golden yellow design", "No seed phrases to write down or remember"]
   },
+  // Row 6: Hyperblue | Ledger Nano Gen5
+  {
+    id: "tangem-3-card-hyperblue",
+    name: "Tangem Wallet (3-Card Set) - Hyperblue-Limited Edition",
+    description: "Premium 3-card backup set in elegant shades of blue collection color. Cool blue tones for a sophisticated look. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    popular: true,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/1e15818a4_Screenshot2025-11-06225427limblue.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Winter Collection color - silver and icy blue design", "NFC tap technology - works with any smartphone"]
+  },
+  {
+    id: "ledger-nano-gen5",
+    name: "Ledger Nano™ Gen5",
+    description: "",
+    price: 999,
+    stock: 5,
+    category: "ledger",
+    image_url: "https://i.imgur.com/YHytEgr.png",
+    features: ["Monochrome E Ink® touchscreen", "Scratch-resistant glass Anti-glare coating", "Connectivity Bluetooth® (BLE 5.2) for any smartphone (iOS or Android)"]
+  },
+  // Row 7: Ultimate Protection Bundle | Complete Security Bundle
+  {
+    id: "bundle-tangem-keystone-plus",
+    name: "Ultimate Protection Bundle - Tangem + Keystone Tablet Plus",
+    description: "Maximum security setup for serious crypto investors. Premium Tangem wallet + Keystone Tablet Plus with individual letter slots for ultimate seed phrase protection.",
+    price: 600,
+    stock: 5,
+    category: "bundle",
+    popular: true,
+    image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
+    features: ["Most secure backup option available", "Fire resistant up to 1399°C", "Save RM 30 vs buying separately"]
+  },
+  {
+    id: "bundle-tangem-keystone",
+    name: "Complete Security Bundle - Tangem + Keystone Tablet",
+    description: "The ultimate crypto security combo! Tangem wallet for daily use + Keystone steel backup for seed phrase protection. Everything you need to secure and backup your crypto.",
+    price: 529,
+    stock: 8,
+    category: "bundle",
+    popular: true,
+    image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
+    features: ["Complete security + backup solution", "Indestructible seed phrase storage", "save RM 20 vs buying separately"]
+  },
   // Remaining Keystone Products
   {
     id: "keystone-tablet",
@@ -212,17 +257,6 @@ const STATIC_PRODUCTS = [
     image_url: "https://i.imgur.com/mms7jCX.png",
     features: ["Wearable NFC ring", "Water-resistant", "Premium titanium"]
   },
-  {
-    id: "tangem-3-card-hyperblue",
-    name: "Tangem Wallet (3-Card Set) - Hyperblue-Limited Edition",
-    description: "Premium 3-card backup set in elegant shades of blue collection color. Cool blue tones for a sophisticated look. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
-    price: 350,
-    stock: 10,
-    category: "tangem",
-    popular: true,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/1e15818a4_Screenshot2025-11-06225427limblue.png",
-    features: ["3 backup cards included - lose 1, still have 2", "Winter Collection color - silver and icy blue design", "NFC tap technology - works with any smartphone"]
-  },
   // Ledger Products (Affiliate)
   {
     id: "ledger-nano-s-plus",
@@ -234,16 +268,6 @@ const STATIC_PRODUCTS = [
     popular: true,
     image_url: "https://i.imgur.com/pNhT5x7.png",
     features: ["Supports 5,500+ coins and tokens", "Monochrome OLED display", "Secure Element Chip: ST33K1M5"]
-  },
-  {
-    id: "ledger-nano-gen5",
-    name: "Ledger Nano™ Gen5",
-    description: "",
-    price: 999,
-    stock: 5,
-    category: "ledger",
-    image_url: "https://i.imgur.com/YHytEgr.png",
-    features: ["Monochrome E Ink® touchscreen", "Scratch-resistant glass Anti-glare coating", "Connectivity Bluetooth® (BLE 5.2) for any smartphone (iOS or Android)"]
   },
   {
     id: "ledger-flex",
@@ -274,29 +298,6 @@ const STATIC_PRODUCTS = [
     category: "ledger",
     image_url: "https://i.imgur.com/mkOIZgr.png",
     features: ["E Ink curved touchscreen", "Wireless charging with Qi", "Bluetooth and USB-C connectivity"]
-  },
-  // Bundle Packages
-  {
-    id: "bundle-tangem-keystone",
-    name: "Complete Security Bundle - Tangem + Keystone Tablet",
-    description: "The ultimate crypto security combo! Tangem wallet for daily use + Keystone steel backup for seed phrase protection. Everything you need to secure and backup your crypto.",
-    price: 529,
-    stock: 8,
-    category: "bundle",
-    popular: true,
-    image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
-    features: ["Complete security + backup solution", "Indestructible seed phrase storage", "save RM 20 vs buying separately"]
-  },
-  {
-    id: "bundle-tangem-keystone-plus",
-    name: "Ultimate Protection Bundle - Tangem + Keystone Tablet Plus",
-    description: "Maximum security setup for serious crypto investors. Premium Tangem wallet + Keystone Tablet Plus with individual letter slots for ultimate seed phrase protection.",
-    price: 600,
-    stock: 5,
-    category: "bundle",
-    popular: true,
-    image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
-    features: ["Most secure backup option available", "Fire resistant up to 1399°C", "Save RM 30 vs buying separately"]
   }
 ];
 
