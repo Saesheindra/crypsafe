@@ -256,7 +256,7 @@ export default function Layout({ children, currentPageName }) {
                   <Menu className="w-6 h-6 text-[#00ffc6]" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="bg-[#071018] border-[#00ffc6]/20">
+              <SheetContent className="bg-[#071018] border-[#00ffc6]/20 overflow-y-auto">
                 <div className="mt-8">
                   <Logo size="default" />
                 </div>
