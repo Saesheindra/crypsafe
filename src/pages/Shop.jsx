@@ -81,6 +81,52 @@ const STATIC_PRODUCTS = [
     image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/3de70dd7c_Screenshot2025-11-06225407sealimited.png",
     features: ["3 backup cards included - lose 1, still have 2", "Electra Sea color - vibrant turquoise and electric blue", "No seed phrases to write down or remember"]
   },
+  // Row 4: Spring Bloom | Stealth
+  {
+    id: "tangem-3-card-spring-bloom",
+    name: "Tangem Wallet (3-Card Set) - Spring Bloom -Limited Edition",
+    description: "Premium 3-card backup set in vibrant Spring Bloom color. Fresh green and floral design that brings life and energy. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    popular: true,
+    image_url: "https://i.imgur.com/K84hmfI.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Spring Bloom color - fresh green and floral design", "No seed phrases to write down or remember"]
+  },
+  {
+    id: "tangem-3-card-stealth",
+    name: "Tangem Wallet (3-Card Set) - Stealth",
+    description: "Premium 3-card backup set in sleek Stealth color. All-black design for discreet carry and maximum sophistication. Total anonymity. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    popular: true,
+    image_url: "https://i.imgur.com/vF4uVLt.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Stealth color - sleek all-black design", "NFC tap technology - works with any smartphone"]
+  },
+  // Row 5: Blush Sky | Sun Drop
+  {
+    id: "tangem-3-card-blush-sky",
+    name: "Tangem Wallet (3-Card Set) - Blush Sky-Limited Edition",
+    description: "Premium 3-card backup set in elegant Blush Sky color. Beautiful pink and blue gradient design. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    popular: true,
+    image_url: "https://i.imgur.com/s5JAdUP.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Elegant Blush Sky color - pink and blue gradient", "No seed phrases to write down or remember"]
+  },
+  {
+    id: "tangem-3-card-sundrop",
+    name: "Tangem Wallet (3-Card Set) - Sun Drop -Limited Edition",
+    description: "Premium 3-card backup set in vibrant Sun Drop color. Warm golden and yellow tones that radiate confidence. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    popular: true,
+    image_url: "https://i.imgur.com/BuMCY2L.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Vibrant Sun Drop color - golden yellow design", "No seed phrases to write down or remember"]
+  },
   // Remaining Keystone Products
   {
     id: "keystone-tablet",
@@ -146,17 +192,6 @@ const STATIC_PRODUCTS = [
     features: ["NFC tap-and-go technology", "Support for 6000+ tokens", "Easy-to-use."]
   },
   {
-    id: "tangem-3-card-sundrop",
-    name: "Tangem Wallet (3-Card Set) - Sun Drop -Limited Edition",
-    description: "Premium 3-card backup set in vibrant Sun Drop color. Warm golden and yellow tones that radiate confidence. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
-    price: 350,
-    stock: 10,
-    category: "tangem",
-    popular: true,
-    image_url: "https://i.imgur.com/BuMCY2L.png",
-    features: ["3 backup cards included - lose 1, still have 2", "Vibrant Sun Drop color - golden yellow design", "No seed phrases to write down or remember"]
-  },
-  {
     id: "tangem-3-card-ring-combo",
     name: "Tangem 3-Card + Ring Combo Set",
     description: "Ultimate Tangem bundle with 3-card wallet and matching ring. Complete NFC security solution with wearable convenience.",
@@ -176,39 +211,6 @@ const STATIC_PRODUCTS = [
     popular: true,
     image_url: "https://i.imgur.com/mms7jCX.png",
     features: ["Wearable NFC ring", "Water-resistant", "Premium titanium"]
-  },
-  {
-    id: "tangem-3-card-spring-bloom",
-    name: "Tangem Wallet (3-Card Set) - Spring Bloom -Limited Edition",
-    description: "Premium 3-card backup set in vibrant Spring Bloom color. Fresh green and floral design that brings life and energy. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
-    price: 350,
-    stock: 10,
-    category: "tangem",
-    popular: true,
-    image_url: "https://i.imgur.com/K84hmfI.png",
-    features: ["3 backup cards included - lose 1, still have 2", "Spring Bloom color - fresh green and floral design", "No seed phrases to write down or remember"]
-  },
-  {
-    id: "tangem-3-card-stealth",
-    name: "Tangem Wallet (3-Card Set) - Stealth",
-    description: "Premium 3-card backup set in sleek Stealth color. All-black design for discreet carry and maximum sophistication. Total anonymity. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
-    price: 350,
-    stock: 10,
-    category: "tangem",
-    popular: true,
-    image_url: "https://i.imgur.com/vF4uVLt.png",
-    features: ["3 backup cards included - lose 1, still have 2", "Stealth color - sleek all-black design", "NFC tap technology - works with any smartphone"]
-  },
-  {
-    id: "tangem-3-card-blush-sky",
-    name: "Tangem Wallet (3-Card Set) - Blush Sky-Limited Edition",
-    description: "Premium 3-card backup set in elegant Blush Sky color. Beautiful pink and blue gradient design. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
-    price: 350,
-    stock: 10,
-    category: "tangem",
-    popular: true,
-    image_url: "https://i.imgur.com/s5JAdUP.png",
-    features: ["3 backup cards included - lose 1, still have 2", "Elegant Blush Sky color - pink and blue gradient", "No seed phrases to write down or remember"]
   },
   {
     id: "tangem-3-card-hyperblue",
