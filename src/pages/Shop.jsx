@@ -214,6 +214,40 @@ const STATIC_PRODUCTS = [
     image_url: "https://i.imgur.com/mkOIZgr.png",
     features: ["E Ink curved touchscreen", "Wireless charging with Qi", "Bluetooth and USB-C connectivity"]
   },
+  // Row 10: Ledger Nano S Plus | Tangem Ring
+  {
+    id: "ledger-nano-s-plus",
+    name: "Ledger Nano S Plus",
+    description: "Keep your private keys securely offline and far from hackers' reach with Ledger's classic self-custody solution, powered by the Secure Element chip and Ledger OS™. Pair this signer with the Ledger Wallet™",
+    price: 279,
+    stock: 5,
+    category: "ledger",
+    popular: true,
+    image_url: "https://i.imgur.com/pNhT5x7.png",
+    features: ["Supports 5,500+ coins and tokens", "Monochrome OLED display", "Secure Element Chip: ST33K1M5"]
+  },
+  {
+    id: "tangem-ring",
+    name: "Tangem (Ring + 2 Cards)",
+    description: "Wearable crypto security. Your private key on your finger. Introducing the world's first ring-shaped hardware wallet",
+    price: 0,
+    stock: 0,
+    category: "tangem",
+    popular: true,
+    image_url: "https://i.imgur.com/mms7jCX.png",
+    features: ["Wearable NFC ring", "Water-resistant", "Premium titanium"]
+  },
+  // Row 11: Tangem 3-Card Black
+  {
+    id: "tangem-3-card-black",
+    name: "Tangem Wallet (3-Card Set) \"Classic Black\"",
+    description: "Most popular choice. Three backup cards for maximum security and convenience. Ultimate security with 3 backup cards. Perfect for serious crypto holders.",
+    price: 350,
+    stock: 20,
+    category: "tangem",
+    image_url: "https://i.imgur.com/DWlY7YJ.png",
+    features: ["Easy-to-use. No pesky buttons, cables or battery charging", "Multi-currency support Thousands of coins and tokens on 80+ networks", "Top security EAL6+ certified secure element will the cards and ring from any attack"]
+  },
   // Remaining Keystone Products
   {
     id: "keystone-tablet",
@@ -238,16 +272,6 @@ const STATIC_PRODUCTS = [
     features: ["Supports 12/18/24 word seed phrases", "Individual slot for each letter (most secure)", "Fire resistant up to 1399°C"]
   },
   // Remaining Tangem Products
-  {
-    id: "tangem-3-card-black",
-    name: "Tangem Wallet (3-Card Set) \"Classic Black\"",
-    description: "Most popular choice. Three backup cards for maximum security and convenience. Ultimate security with 3 backup cards. Perfect for serious crypto holders.",
-    price: 350,
-    stock: 20,
-    category: "tangem",
-    image_url: "https://i.imgur.com/DWlY7YJ.png",
-    features: ["Easy-to-use. No pesky buttons, cables or battery charging", "Multi-currency support Thousands of coins and tokens on 80+ networks", "Top security EAL6+ certified secure element will the cards and ring from any attack"]
-  },
   {
     id: "tangem-3-card-white",
     name: "Tangem Wallet 3-Card Set (White)",
@@ -277,29 +301,6 @@ const STATIC_PRODUCTS = [
     category: "tangem",
     image_url: "https://shop.tangem.com/cdn/shop/files/ring_silver.png?v=1714047915&width=600",
     features: ["3 backup cards + Ring", "NFC technology", "Wearable option", "Top security EAL6+ certified"]
-  },
-  {
-    id: "tangem-ring",
-    name: "Tangem (Ring + 2 Cards)",
-    description: "Wearable crypto security. Your private key on your finger. Introducing the world's first ring-shaped hardware wallet",
-    price: 0,
-    stock: 0,
-    category: "tangem",
-    popular: true,
-    image_url: "https://i.imgur.com/mms7jCX.png",
-    features: ["Wearable NFC ring", "Water-resistant", "Premium titanium"]
-  },
-  // Remaining Ledger Products (Affiliate)
-  {
-    id: "ledger-nano-s-plus",
-    name: "Ledger Nano S Plus",
-    description: "Keep your private keys securely offline and far from hackers' reach with Ledger's classic self-custody solution, powered by the Secure Element chip and Ledger OS™. Pair this signer with the Ledger Wallet™",
-    price: 279,
-    stock: 5,
-    category: "ledger",
-    popular: true,
-    image_url: "https://i.imgur.com/pNhT5x7.png",
-    features: ["Supports 5,500+ coins and tokens", "Monochrome OLED display", "Secure Element Chip: ST33K1M5"]
   }
 ];
 
