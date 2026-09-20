@@ -43,10 +43,17 @@ export default function Keystone() {
   const [cart, setCart] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
 
-  const { data: products, isLoading } = useQuery({
+  const { data: products = [], isLoading } = useQuery({
     queryKey: ['keystone-products'],
-    queryFn: () => base44.entities.Product.filter({ category: 'keystone' }),
-    initialData: [],
+    queryFn: async () => {
+      try {
+        const result = await base44.entities.Product.filter({ category: 'keystone' });
+        return Array.isArray(result) ? result : [];
+      } catch (error) {
+        console.error('Failed to fetch Keystone products:', error);
+        return [];
+      }
+    },
   });
 
   // Load cart from localStorage
@@ -278,7 +285,7 @@ export default function Keystone() {
               </Card>
             ))}
           </div>
-        ) : products.length === 0 ? (
+        ) : !Array.isArray(products) || products.length === 0 ? (
           <div className="text-center py-20">
             <Package className="w-16 h-16 mx-auto mb-4 text-[#00ffc6] opacity-50" />
             <p className="text-xl text-[#bfeee0]">No Keystone products available at the moment</p>
