@@ -20,88 +20,87 @@ const STATIC_PRODUCTS = [
   {
     id: "keystone-3-pro",
     name: "Keystone 3 Pro",
-    description: "Air-gapped hardware wallet with a 4-inch touchscreen and fingerprint sensor. Supports 5500+ cryptocurrencies.",
+    description: "Keystone 3 Pro is the only hardware wallet equipped with three security chips to securely manage multiple crypto accounts. Its Air-Gapped Mode eliminates all connectivity risks, ensuring maximum security for your assets.",
     price: 500,
     stock: 10,
     category: "keystone",
-    popular: true,
-    image_url: "https://keyst.one/cdn/shop/files/K3_1.png?v=1701920936&width=600",
-    features: ["4-inch touchscreen", "Fingerprint unlock", "Air-gapped security", "5500+ coins supported"]
+    image_url: "https://media.base44.com/images/public/68f88f2cb7165a70a22ee871/e7ca46336_Screenshot2026-09-07211819.png",
+    features: ["100% Open Source", "Air-Gapped QR Code", "4-Inch Touchscreen"]
   },
   {
     id: "keystone-tablet",
     name: "Keystone Tablet",
-    description: "Indestructible steel seed phrase backup. Fire and water resistant up to 1399°C.",
+    description: "Professional-grade steel seed phrase backup solution. Corrosion, fire, and water resistant storage for your crypto recovery words.",
     price: 199,
     stock: 15,
     category: "keystone",
-    image_url: "https://keyst.one/cdn/shop/products/KeystoneTablet.png?v=1663310123&width=600",
-    features: ["Fire resistant (1399°C)", "Waterproof", "304 stainless steel", "BIP39 compatible"]
+    popular: true,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/579f4a49a_ketstonetabletimage.png",
+    features: ["Supports 12/18/24 word seed phrases", "Fire resistant up to 1399°C", "Waterproof and corrosion resistant"]
   },
   {
     id: "keystone-tablet-plus",
     name: "Keystone Tablet Plus",
-    description: "Premium steel backup with individual letter slots. Maximum security for your seed phrase.",
+    description: "Premium steel backup solution with individual letter slots for maximum security. The ultimate seed phrase protection for serious crypto holders.",
     price: 280,
     stock: 10,
     category: "keystone",
     popular: true,
-    image_url: "https://keyst.one/cdn/shop/products/TabletPlus_1.png?v=1665999418&width=600",
-    features: ["Individual letter slots", "17 tamper-proof screws", "Fire & water resistant", "Maximum durability"]
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/ab8ce4ea1_ketstonetabletplusimage.png",
+    features: ["Supports 12/18/24 word seed phrases", "Individual slot for each letter (most secure)", "Fire resistant up to 1399°C"]
   },
   // OneKey Products
   {
     id: "onekey-classic-1s-pure",
     name: "OneKey Classic 1S Pure",
-    description: "Premium hardware wallet with OLED display. Compact design with secure element chip.",
+    description: "Ultra-affordable entry-level hardware wallet with essential security for crypto beginners",
     price: 310,
     stock: 8,
     category: "onekey",
-    image_url: "https://onekey.so/_next/image?url=https%3A%2F%2Fonekey-asset.com%2Fupload%2Fimages%2F2024%2F09%2F19%2F8vc9qbjn_onekey-classic-1s-pure.png&w=640&q=75",
-    features: ["OLED display", "Secure element chip", "USB-C connection", "Multi-crypto support"]
+    image_url: "https://i.imgur.com/KzoBv6J.png",
+    features: ["EAL 6+ Secure Element Chip", "Bluetooth & USB-C connectivity", "Security Key functionality"]
   },
   {
     id: "onekey-classic-1s",
     name: "OneKey Classic 1S",
-    description: "Advanced hardware wallet with color display. Supports thousands of cryptocurrencies.",
+    description: "Affordable open-source hardware wallet with essential security features and wide crypto support",
     price: 400,
     stock: 5,
     category: "onekey",
-    image_url: "https://onekey.so/_next/image?url=https%3A%2F%2Fonekey-asset.com%2Fupload%2Fimages%2F2024%2F06%2F19%2Fd6vhyflg_onekey-classic-1s.png&w=640&q=75",
-    features: ["Color display", "Bluetooth connectivity", "Secure element", "Open source firmware"]
+    popular: true,
+    image_url: "https://i.imgur.com/J0NoiXJ.jpeg",
+    features: ["EAL 6+ Secure Element Chip", "Bluetooth & USB-C connectivity", "Security Key functionality"]
   },
   {
     id: "onekey-pro-black",
-    name: "OneKey Pro (Black)",
-    description: "Flagship hardware wallet with biometric authentication and large touchscreen display.",
+    name: "OneKey Pro - Black",
+    description: "Premium open-source hardware wallet with 3.5\" touchscreen, multi-chain support, and air-gapped security",
     price: 1100,
     stock: 3,
     category: "onekey",
-    popular: true,
-    image_url: "https://onekey.so/_next/image?url=https%3A%2F%2Fonekey-asset.com%2Fupload%2Fimages%2F2024%2F06%2F19%2F1ww9cpqd_onekey-pro-black.png&w=640&q=75",
-    features: ["Fingerprint unlock", "3.5-inch touchscreen", "Air-gapped security", "Premium build quality"]
+    image_url: "https://i.imgur.com/5aN1PSF.png",
+    features: ["EAL 6+ Secure Element Chip", "Air-gapped Signing", "Fingerprint sensor"]
   },
   {
     id: "onekey-pro-white",
-    name: "OneKey Pro (White)",
-    description: "Flagship hardware wallet with biometric authentication and large touchscreen display.",
+    name: "OneKey Pro - White",
+    description: "Premium open-source hardware wallet with 3.5\" touchscreen, multi-chain support, and air-gapped security",
     price: 1100,
     stock: 3,
     category: "onekey",
-    image_url: "https://onekey.so/_next/image?url=https%3A%2F%2Fonekey-asset.com%2Fupload%2Fimages%2F2024%2F06%2F19%2Fef5jn9vd_onekey-pro-white.png&w=640&q=75",
-    features: ["Fingerprint unlock", "3.5-inch touchscreen", "Air-gapped security", "Premium build quality"]
+    image_url: "https://i.imgur.com/Eeq97cA.png",
+    features: ["EAL 6+ Secure Element Chip", "Air-gapped Signing", "Fingerprint sensor"]
   },
   // Tangem Products
   {
     id: "tangem-3-card-black",
-    name: "Tangem Wallet 3-Card Set (Black)",
-    description: "NFC-powered crypto wallet cards. No batteries, no charging. Just tap to sign transactions.",
+    name: "Tangem Wallet (3-Card Set) \"Classic Black\"",
+    description: "Most popular choice. Three backup cards for maximum security and convenience. Ultimate security with 3 backup cards. Perfect for serious crypto holders.",
     price: 350,
     stock: 20,
     category: "tangem",
-    popular: true,
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["NFC technology", "No battery needed", "Backup cards included", "25-year lifespan"]
+    image_url: "https://i.imgur.com/DWlY7YJ.png",
+    features: ["Easy-to-use. No pesky buttons, cables or battery charging", "Multi-currency support Thousands of coins and tokens on 80+ networks", "Top security EAL6+ certified secure element will the cards and ring from any attack"]
   },
   {
     id: "tangem-3-card-white",
@@ -125,24 +124,24 @@ const STATIC_PRODUCTS = [
   },
   {
     id: "tangem-2-card",
-    name: "Tangem Wallet 2-Card Set",
-    description: "Compact NFC wallet set with one backup card. Perfect for everyday crypto transactions.",
+    name: "Tangem Wallet (2-Card Set) \"Classic Black\"",
+    description: "Perfect starter pack with 2 cards for backup. NFC-enabled, supports 6000+ cryptocurrencies.",
     price: 290,
     stock: 25,
     category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_2_card_en.png?v=1699356965&width=600",
-    features: ["NFC technology", "No battery needed", "1 backup card", "Compact design"]
+    image_url: "https://i.imgur.com/9V8VMrK.png",
+    features: ["NFC tap-and-go technology", "Support for 6000+ tokens", "Easy-to-use."]
   },
   {
     id: "tangem-3-card-sundrop",
-    name: "Tangem Wallet (3-Card Set) - Sun Drop Limited Edition",
-    description: "Premium 3-card backup set in vibrant Sun Drop color. Warm golden and yellow tones that radiate confidence. Each set includes 3 NFC cards that work together.",
+    name: "Tangem Wallet (3-Card Set) - Sun Drop -Limited Edition",
+    description: "Premium 3-card backup set in vibrant Sun Drop color. Warm golden and yellow tones that radiate confidence. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
     price: 350,
     stock: 10,
     category: "tangem",
     popular: true,
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+    image_url: "https://i.imgur.com/BuMCY2L.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Vibrant Sun Drop color - golden yellow design", "No seed phrases to write down or remember"]
   },
   {
     id: "tangem-3-card-ring-combo",
@@ -156,85 +155,91 @@ const STATIC_PRODUCTS = [
   },
   {
     id: "tangem-ring",
-    name: "Tangem Ring (Ring Edition)",
-    description: "Wearable crypto wallet in ring form. Sign transactions with a tap of your finger.",
+    name: "Tangem (Ring + 2 Cards)",
+    description: "Wearable crypto security. Your private key on your finger. Introducing the world's first ring-shaped hardware wallet",
     price: 0,
     stock: 0,
     category: "tangem",
     popular: true,
-    image_url: "https://shop.tangem.com/cdn/shop/files/ring_silver.png?v=1714047915&width=600",
-    features: ["Wearable design", "NFC technology", "Waterproof", "Titanium construction"]
+    image_url: "https://i.imgur.com/mms7jCX.png",
+    features: ["Wearable NFC ring", "Water-resistant", "Premium titanium"]
   },
   {
     id: "tangem-3-card-electra-sea",
-    name: "Tangem Wallet (3-Card Set) - Electra Sea Limited Edition",
-    description: "Premium 3-card set in stunning Electra Sea color. Deep blue ocean-inspired tones. Each set includes 3 NFC cards for ultimate backup security.",
+    name: "Tangem Wallet (3-Card Set) - Electra Sea- Limited Edition",
+    description: "Premium 3-card backup set in stunning Electra Sea color. Mesmerizing turquoise and electric blue tones inspired by tropical waters. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
     price: 350,
-    stock: 10,
+    stock: 0,
     category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+    popular: true,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/3de70dd7c_Screenshot2025-11-06225407sealimited.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Electra Sea color - vibrant turquoise and electric blue", "No seed phrases to write down or remember"]
   },
   {
     id: "tangem-3-card-spring-bloom",
-    name: "Tangem Wallet (3-Card Set) - Spring Bloom Limited Edition",
-    description: "Premium 3-card set in fresh Spring Bloom color. Vibrant floral-inspired pastels. Each set includes 3 NFC cards for ultimate backup security.",
+    name: "Tangem Wallet (3-Card Set) - Spring Bloom -Limited Edition",
+    description: "Premium 3-card backup set in vibrant Spring Bloom color. Fresh green and floral design that brings life and energy. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
     price: 350,
     stock: 10,
     category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+    popular: true,
+    image_url: "https://i.imgur.com/K84hmfI.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Spring Bloom color - fresh green and floral design", "No seed phrases to write down or remember"]
   },
   {
     id: "tangem-3-card-stealth",
     name: "Tangem Wallet (3-Card Set) - Stealth",
-    description: "Premium 3-card set in sleek Stealth color. All-black matte finish for maximum discretion. Each set includes 3 NFC cards for ultimate backup security.",
+    description: "Premium 3-card backup set in sleek Stealth color. All-black design for discreet carry and maximum sophistication. Total anonymity. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
     price: 350,
     stock: 10,
     category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["Stealth matte black", "3 backup cards included", "NFC technology", "No seed phrases"]
+    popular: true,
+    image_url: "https://i.imgur.com/vF4uVLt.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Stealth color - sleek all-black design", "NFC tap technology - works with any smartphone"]
   },
   {
     id: "tangem-3-card-blush-sky",
-    name: "Tangem Wallet (3-Card Set) - Blush Sky Limited Edition",
-    description: "Premium 3-card set in elegant Blush Sky color. Soft pink and sky blue gradient tones. Each set includes 3 NFC cards for ultimate backup security.",
+    name: "Tangem Wallet (3-Card Set) - Blush Sky-Limited Edition",
+    description: "Premium 3-card backup set in elegant Blush Sky color. Beautiful pink and blue gradient design. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
     price: 350,
     stock: 10,
     category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+    popular: true,
+    image_url: "https://i.imgur.com/s5JAdUP.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Elegant Blush Sky color - pink and blue gradient", "No seed phrases to write down or remember"]
   },
   {
     id: "tangem-3-card-hyperblue",
-    name: "Tangem Wallet (3-Card Set) - Hyperblue Limited Edition",
-    description: "Premium 3-card set in vibrant Hyperblue color. Electric blue finish that stands out. Each set includes 3 NFC cards for ultimate backup security.",
+    name: "Tangem Wallet (3-Card Set) - Hyperblue-Limited Edition",
+    description: "Premium 3-card backup set in elegant shades of blue collection color. Cool blue tones for a sophisticated look. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
     price: 350,
     stock: 10,
     category: "tangem",
-    image_url: "https://shop.tangem.com/cdn/shop/files/wallet_3_card_en.png?v=1699356965&width=600",
-    features: ["Limited Edition color", "3 backup cards included", "NFC technology", "No seed phrases"]
+    popular: true,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/1e15818a4_Screenshot2025-11-06225427limblue.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Winter Collection color - silver and icy blue design", "NFC tap technology - works with any smartphone"]
   },
   // Ledger Products (Affiliate)
   {
     id: "ledger-nano-s-plus",
     name: "Ledger Nano S Plus",
-    description: "Entry-level hardware wallet with secure element. Perfect for beginners.",
+    description: "Keep your private keys securely offline and far from hackers' reach with Ledger's classic self-custody solution, powered by the Secure Element chip and Ledger OS™. Pair this signer with the Ledger Wallet™",
     price: 279,
-    stock: 0,
+    stock: 5,
     category: "ledger",
-    image_url: "https://shop.ledger.com/cdn/shop/products/nano-s-plus-front.png?v=1684137958&width=600",
-    features: ["Secure element chip", "USB-C", "5000+ coins", "Ledger Live app"]
+    popular: true,
+    image_url: "https://i.imgur.com/pNhT5x7.png",
+    features: ["Supports 5,500+ coins and tokens", "Monochrome OLED display", "Secure Element Chip: ST33K1M5"]
   },
   {
     id: "ledger-nano-gen5",
-    name: "Ledger Nano Gen5",
-    description: "Latest generation Ledger with monochrome E Ink touchscreen and Bluetooth connectivity.",
+    name: "Ledger Nano™ Gen5",
+    description: "",
     price: 999,
     stock: 5,
     category: "ledger",
-    image_url: "https://shop.ledger.com/cdn/shop/products/nano-x-front.png?v=1684138004&width=600",
-    features: ["Monochrome E Ink touchscreen", "Scratch-resistant glass", "Bluetooth BLE 5.2", "iOS & Android compatible"]
+    image_url: "https://i.imgur.com/YHytEgr.png",
+    features: ["Monochrome E Ink® touchscreen", "Scratch-resistant glass Anti-glare coating", "Connectivity Bluetooth® (BLE 5.2) for any smartphone (iOS or Android)"]
   },
   {
     id: "ledger-flex",
@@ -243,9 +248,8 @@ const STATIC_PRODUCTS = [
     price: 1266,
     stock: 5,
     category: "ledger",
-    popular: true,
-    image_url: "https://shop.ledger.com/cdn/shop/files/Ledger_Flex_Black_Front_800x800_crop_center.png?v=1716294988&width=600",
-    features: ["E Ink touchscreen display", "USB-C connectivity", "More affordable than Stax", "Premium build"]
+    image_url: "https://i.imgur.com/0QIR5Mv.png",
+    features: ["E Ink touchscreen display", "USB-C connectivity", "More affordable than Stax"]
   },
   {
     id: "ledger-nano-x",
@@ -254,8 +258,8 @@ const STATIC_PRODUCTS = [
     price: 779,
     stock: 5,
     category: "ledger",
-    image_url: "https://shop.ledger.com/cdn/shop/products/nano-x-front.png?v=1684138004&width=600",
-    features: ["Bluetooth connectivity for mobile", "Manage 100+ crypto apps", "USB-C charging", "Mobile compatible"]
+    image_url: "https://i.imgur.com/risjnYg.png",
+    features: ["Bluetooth connectivity for mobile", "Manage 100+ crypto apps simultaneously", "USB-C charging"]
   },
   {
     id: "ledger-stax",
@@ -264,30 +268,31 @@ const STATIC_PRODUCTS = [
     price: 2037,
     stock: 5,
     category: "ledger",
-    image_url: "https://shop.ledger.com/cdn/shop/files/Stax_Front_Black_crop_center.png?v=1699618437&width=600",
-    features: ["E Ink curved touchscreen", "Wireless charging with Qi", "Bluetooth and USB-C", "Tony Fadell design"]
+    image_url: "https://i.imgur.com/mkOIZgr.png",
+    features: ["E Ink curved touchscreen", "Wireless charging with Qi", "Bluetooth and USB-C connectivity"]
   },
   // Bundle Packages
   {
     id: "bundle-tangem-keystone",
-    name: "Tangem + Keystone Tablet Bundle",
-    description: "Complete security package: Tangem 3-Card wallet + Keystone Tablet steel backup.",
+    name: "Complete Security Bundle - Tangem + Keystone Tablet",
+    description: "The ultimate crypto security combo! Tangem wallet for daily use + Keystone steel backup for seed phrase protection. Everything you need to secure and backup your crypto.",
     price: 529,
     stock: 8,
     category: "bundle",
     popular: true,
     image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
-    features: ["Tangem 3-Card Set", "Keystone Tablet", "Complete protection", "Save RM 20"]
+    features: ["Complete security + backup solution", "Indestructible seed phrase storage", "save RM 20 vs buying separately"]
   },
   {
     id: "bundle-tangem-keystone-plus",
-    name: "Tangem + Keystone Tablet Plus Bundle",
-    description: "Premium security package: Tangem 3-Card wallet + Keystone Tablet Plus steel backup.",
+    name: "Ultimate Protection Bundle - Tangem + Keystone Tablet Plus",
+    description: "Maximum security setup for serious crypto investors. Premium Tangem wallet + Keystone Tablet Plus with individual letter slots for ultimate seed phrase protection.",
     price: 600,
     stock: 5,
     category: "bundle",
+    popular: true,
     image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
-    features: ["Tangem 3-Card Set", "Keystone Tablet Plus", "Maximum security", "Save RM 30"]
+    features: ["Most secure backup option available", "Fire resistant up to 1399°C", "Save RM 30 vs buying separately"]
   }
 ];
 
