@@ -1262,24 +1262,57 @@ export default function Shop() {
               <span className="text-blue-400">📦</span> Choose Your Backup
             </h3>
             <div className="space-y-4">
-              {products.filter(p => p.category === "keystone").map((product) => (
-                <div key={product.id} className="p-4 rounded-lg bg-[#021213] border-2 border-blue-400/30 hover:border-blue-400/50 transition-all">
-                  <h4 className="font-bold text-xl mb-2 text-white">{product.name}</h4>
-                  <p className="text-[#c6fff0] text-sm mb-3">{product.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-blue-400">RM {product.price?.toFixed(2)}</span>
-                    <Button
-                      onClick={() => {
-                        setSelectedCategory("keystone");
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }}
-                      className="bg-blue-500 hover:bg-blue-600 text-white"
-                    >
-                      View Product
-                    </Button>
-                  </div>
+              {/* Keystone 3 Pro */}
+              <div className="p-4 rounded-lg bg-[#021213] border-2 border-blue-400/30 hover:border-blue-400/50 transition-all">
+                <h4 className="font-bold text-xl mb-2 text-white">Keystone 3 Pro</h4>
+                <p className="text-[#c6fff0] text-sm mb-3">Keystone 3 Pro is the only hardware wallet equipped with three security chips to securely manage multiple crypto accounts. Its Air-Gapped Mode eliminates all connectivity risks, ensuring maximum security for your assets.</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-bold text-blue-400">RM 500.00</span>
+                  <Button
+                    onClick={() => {
+                      setSelectedCategory("keystone");
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                  >
+                    View Product
+                  </Button>
                 </div>
-              ))}
+              </div>
+              {/* Keystone Tablet Plus */}
+              <div className="p-4 rounded-lg bg-[#021213] border-2 border-blue-400/30 hover:border-blue-400/50 transition-all">
+                <h4 className="font-bold text-xl mb-2 text-white">Keystone Tablet Plus</h4>
+                <p className="text-[#c6fff0] text-sm mb-3">Premium steel backup solution with individual letter slots for maximum security. The ultimate seed phrase protection for serious crypto holders.</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-bold text-blue-400">RM 280.00</span>
+                  <Button
+                    onClick={() => {
+                      setSelectedCategory("keystone");
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                  >
+                    View Product
+                  </Button>
+                </div>
+              </div>
+              {/* Keystone Tablet */}
+              <div className="p-4 rounded-lg bg-[#021213] border-2 border-blue-400/30 hover:border-blue-400/50 transition-all">
+                <h4 className="font-bold text-xl mb-2 text-white">Keystone Tablet</h4>
+                <p className="text-[#c6fff0] text-sm mb-3">Professional-grade steel seed phrase backup solution. Corrosion, fire, and water resistant storage for your crypto recovery words.</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-bold text-blue-400">RM 199.00</span>
+                  <Button
+                    onClick={() => {
+                      setSelectedCategory("keystone");
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="bg-blue-500 hover:bg-blue-600 text-white"
+                  >
+                    View Product
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
