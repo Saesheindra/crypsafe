@@ -172,6 +172,48 @@ const STATIC_PRODUCTS = [
     image_url: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=400&h=300&fit=crop",
     features: ["Complete security + backup solution", "Indestructible seed phrase storage", "save RM 20 vs buying separately"]
   },
+  // Row 8: Ledger Flex | Tangem 2-Card
+  {
+    id: "ledger-flex",
+    name: "Ledger Flex",
+    description: "Mid-range E Ink touchscreen wallet - perfect balance of features and affordability.",
+    price: 1266,
+    stock: 5,
+    category: "ledger",
+    image_url: "https://i.imgur.com/0QIR5Mv.png",
+    features: ["E Ink touchscreen display", "USB-C connectivity", "More affordable than Stax"]
+  },
+  {
+    id: "tangem-2-card",
+    name: "Tangem Wallet (2-Card Set) \"Classic Black\"",
+    description: "Perfect starter pack with 2 cards for backup. NFC-enabled, supports 6000+ cryptocurrencies.",
+    price: 290,
+    stock: 25,
+    category: "tangem",
+    image_url: "https://i.imgur.com/9V8VMrK.png",
+    features: ["NFC tap-and-go technology", "Support for 6000+ tokens", "Easy-to-use."]
+  },
+  // Row 9: Ledger Nano X | Ledger Stax
+  {
+    id: "ledger-nano-x",
+    name: "Ledger Nano X",
+    description: "Premium Bluetooth hardware wallet with large screen and mobile app support. Manage 100+ apps simultaneously.",
+    price: 779,
+    stock: 5,
+    category: "ledger",
+    image_url: "https://i.imgur.com/risjnYg.png",
+    features: ["Bluetooth connectivity for mobile", "Manage 100+ crypto apps simultaneously", "USB-C charging"]
+  },
+  {
+    id: "ledger-stax",
+    name: "Ledger Stax",
+    description: "Next-gen hardware wallet with E Ink touchscreen. Designed by iPod creator Tony Fadell.",
+    price: 2037,
+    stock: 5,
+    category: "ledger",
+    image_url: "https://i.imgur.com/mkOIZgr.png",
+    features: ["E Ink curved touchscreen", "Wireless charging with Qi", "Bluetooth and USB-C connectivity"]
+  },
   // Remaining Keystone Products
   {
     id: "keystone-tablet",
@@ -227,16 +269,6 @@ const STATIC_PRODUCTS = [
     features: ["NFC technology", "No battery needed", "Backup cards included", "25-year lifespan"]
   },
   {
-    id: "tangem-2-card",
-    name: "Tangem Wallet (2-Card Set) \"Classic Black\"",
-    description: "Perfect starter pack with 2 cards for backup. NFC-enabled, supports 6000+ cryptocurrencies.",
-    price: 290,
-    stock: 25,
-    category: "tangem",
-    image_url: "https://i.imgur.com/9V8VMrK.png",
-    features: ["NFC tap-and-go technology", "Support for 6000+ tokens", "Easy-to-use."]
-  },
-  {
     id: "tangem-3-card-ring-combo",
     name: "Tangem 3-Card + Ring Combo Set",
     description: "Ultimate Tangem bundle with 3-card wallet and matching ring. Complete NFC security solution with wearable convenience.",
@@ -257,7 +289,7 @@ const STATIC_PRODUCTS = [
     image_url: "https://i.imgur.com/mms7jCX.png",
     features: ["Wearable NFC ring", "Water-resistant", "Premium titanium"]
   },
-  // Ledger Products (Affiliate)
+  // Remaining Ledger Products (Affiliate)
   {
     id: "ledger-nano-s-plus",
     name: "Ledger Nano S Plus",
@@ -268,36 +300,6 @@ const STATIC_PRODUCTS = [
     popular: true,
     image_url: "https://i.imgur.com/pNhT5x7.png",
     features: ["Supports 5,500+ coins and tokens", "Monochrome OLED display", "Secure Element Chip: ST33K1M5"]
-  },
-  {
-    id: "ledger-flex",
-    name: "Ledger Flex",
-    description: "Mid-range E Ink touchscreen wallet - perfect balance of features and affordability.",
-    price: 1266,
-    stock: 5,
-    category: "ledger",
-    image_url: "https://i.imgur.com/0QIR5Mv.png",
-    features: ["E Ink touchscreen display", "USB-C connectivity", "More affordable than Stax"]
-  },
-  {
-    id: "ledger-nano-x",
-    name: "Ledger Nano X",
-    description: "Premium Bluetooth hardware wallet with large screen and mobile app support. Manage 100+ apps simultaneously.",
-    price: 779,
-    stock: 5,
-    category: "ledger",
-    image_url: "https://i.imgur.com/risjnYg.png",
-    features: ["Bluetooth connectivity for mobile", "Manage 100+ crypto apps simultaneously", "USB-C charging"]
-  },
-  {
-    id: "ledger-stax",
-    name: "Ledger Stax",
-    description: "Next-gen hardware wallet with E Ink touchscreen. Designed by iPod creator Tony Fadell.",
-    price: 2037,
-    stock: 5,
-    category: "ledger",
-    image_url: "https://i.imgur.com/mkOIZgr.png",
-    features: ["E Ink curved touchscreen", "Wireless charging with Qi", "Bluetooth and USB-C connectivity"]
   }
 ];
 
