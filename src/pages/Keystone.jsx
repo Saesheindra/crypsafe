@@ -16,7 +16,7 @@ const KEYSTONE_PRODUCTS = [
     price: 500,
     stock: 5,
     popular: false,
-    image_url: "https://i.imgur.com/8QR8rHd.png",
+    image_url: "https://cdn.shopify.com/s/files/1/0029/3175/3060/files/3pro.png?v=1728372157",
     features: [
       "100% Open Source",
       "Air-Gapped QR Code",
@@ -36,7 +36,7 @@ const KEYSTONE_PRODUCTS = [
     price: 199,
     stock: 10,
     popular: false,
-    image_url: "https://i.imgur.com/wL5HJXK.png",
+    image_url: "https://cdn.shopify.com/s/files/1/0029/3175/3060/products/Tablet1.jpg?v=1677056166",
     features: [
       "Supports 12/18/24 word seed phrases",
       "Fire resistant up to 1399°C",
@@ -55,7 +55,7 @@ const KEYSTONE_PRODUCTS = [
     price: 280,
     stock: 8,
     popular: true,
-    image_url: "https://i.imgur.com/dZrJP0L.png",
+    image_url: "https://cdn.shopify.com/s/files/1/0029/3175/3060/products/Plus1.jpg?v=1677056227",
     features: [
       "Supports 12/18/24 word seed phrases",
       "Individual slot for each letter (most secure)",
