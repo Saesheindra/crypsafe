@@ -8,43 +8,140 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
-// Static products for comparison
+// All products for comparison - matching the screenshot
 const COMPARE_PRODUCTS = [
+  // ===== TANGEM WALLETS =====
   {
-    id: "tangem-3-card-black",
-    name: "Tangem Wallet (3-Card Set)",
+    id: "tangem-3-card-electra-sea",
+    name: "Tangem Wallet (3-Card Set) - Electra Sea- Limited Edition",
     price: 350,
+    stock: 10,
+    category: "tangem",
+    features: ["No seed phrases needed", "NFC tap technology", "3 backup cards included", "EAL6+ certified chip", "Mobile app control", "Waterproof design"]
+  },
+  {
+    id: "tangem-3-card-spring-bloom",
+    name: "Tangem Wallet (3-Card Set) - Spring Bloom -Limited Edition",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    features: ["No seed phrases needed", "NFC tap technology", "3 backup cards included", "EAL6+ certified chip", "Mobile app control", "Floral design"]
+  },
+  {
+    id: "tangem-3-card-stealth",
+    name: "Tangem Wallet (3-Card Set) - Stealth",
+    price: 350,
+    stock: 15,
+    category: "tangem",
+    features: ["No seed phrases needed", "NFC tap technology", "3 backup cards included", "EAL6+ certified chip", "Mobile app control", "Stealth black design"]
+  },
+  {
+    id: "tangem-3-card-blush-sky",
+    name: "Tangem Wallet (3-Card Set) - Blush Sky-Limited Edition",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    features: ["No seed phrases needed", "NFC tap technology", "3 backup cards included", "EAL6+ certified chip", "Mobile app control", "Gradient design"]
+  },
+  {
+    id: "tangem-3-card-sun-drop",
+    name: "Tangem Wallet (3-Card Set) - Sun Drop -Limited Edition",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    features: ["No seed phrases needed", "NFC tap technology", "3 backup cards included", "EAL6+ certified chip", "Mobile app control", "Warm gradient design"]
+  },
+  {
+    id: "tangem-3-card-hyperblue",
+    name: "Tangem Wallet (3-Card Set) - Hyperblue-Limited Edition",
+    price: 350,
+    stock: 10,
+    category: "tangem",
+    features: ["No seed phrases needed", "NFC tap technology", "3 backup cards included", "EAL6+ certified chip", "Mobile app control", "Vibrant blue design"]
+  },
+  {
+    id: "tangem-2-card-classic-black",
+    name: 'Tangem Wallet (2-Card Set) "Classic Black"',
+    price: 290,
     stock: 20,
     category: "tangem",
-    image_url: "https://i.imgur.com/DWlY7YJ.png",
-    features: ["No seed phrases", "NFC tap technology", "3 backup cards included", "EAL6+ certified", "Mobile app control"]
+    features: ["No seed phrases needed", "NFC tap technology", "2 backup cards included", "EAL6+ certified chip", "Mobile app control", "Classic black design"]
+  },
+  {
+    id: "tangem-ring-2-cards",
+    name: "Tangem (Ring + 2 Cards)",
+    price: 250,
+    stock: 8,
+    category: "tangem",
+    features: ["Wearable ring format", "NFC tap technology", "2 backup cards included", "EAL6+ certified chip", "Mobile app control", "Convenient access"]
+  },
+  {
+    id: "tangem-3-card-classic-black",
+    name: 'Tangem Wallet (3-Card Set) "Classic Black"',
+    price: 350,
+    stock: 25,
+    category: "tangem",
+    features: ["No seed phrases needed", "NFC tap technology", "3 backup cards included", "EAL6+ certified chip", "Mobile app control", "Classic black design"]
+  },
+
+  // ===== ONEKEY WALLETS =====
+  {
+    id: "onekey-classic-1s-pure",
+    name: "OneKey Classic 1S Pure",
+    price: 310,
+    stock: 8,
+    category: "onekey",
+    features: ["EAL 6+ Secure Element", "Bluetooth & USB-C", "Open-source firmware", "Multi-chain support", "Compact design", "Security Key function"]
+  },
+  {
+    id: "onekey-pro-white",
+    name: "OneKey Pro - White",
+    price: 1100,
+    stock: 3,
+    category: "onekey",
+    features: ["3.5\" IPS touchscreen", "Air-gapped signing", "Fingerprint sensor", "EAL 6+ chip", "Premium white design", "Camera for QR scanning"]
+  },
+  {
+    id: "onekey-pro-black",
+    name: "OneKey Pro - Black",
+    price: 1100,
+    stock: 5,
+    category: "onekey",
+    features: ["3.5\" IPS touchscreen", "Air-gapped signing", "Fingerprint sensor", "EAL 6+ chip", "Premium black design", "Camera for QR scanning"]
   },
   {
     id: "onekey-classic-1s",
     name: "OneKey Classic 1S",
     price: 400,
-    stock: 5,
+    stock: 6,
     category: "onekey",
-    image_url: "https://i.imgur.com/J0NoiXJ.jpeg",
-    features: ["EAL 6+ Secure Element", "Bluetooth & USB-C", "Open-source", "Multi-chain support", "Security Key function"]
+    features: ["EAL 6+ Secure Element", "Bluetooth & USB-C", "Open-source firmware", "Multi-chain support", "OLED display", "Security Key function"]
   },
-  {
-    id: "onekey-pro-black",
-    name: "OneKey Pro",
-    price: 1100,
-    stock: 3,
-    category: "onekey",
-    image_url: "https://i.imgur.com/5aN1PSF.png",
-    features: ["3.5\" touchscreen", "Air-gapped signing", "Fingerprint sensor", "EAL 6+ chip", "Premium design"]
-  },
+
+  // ===== KEYSTONE PRODUCTS =====
   {
     id: "keystone-3-pro",
     name: "Keystone 3 Pro",
     price: 500,
     stock: 5,
     category: "keystone",
-    image_url: "https://i.imgur.com/8QR8rHd.png",
-    features: ["Triple secure element chips", "4-inch touchscreen", "100% air-gapped", "QR code transactions", "PCI anti-tamper"]
+    features: ["Triple secure element chips", "4-inch touchscreen", "100% air-gapped", "QR code transactions", "Fingerprint sensor", "Anti-tamper protection"]
+  },
+  {
+    id: "keystone-tablet",
+    name: "Keystone Tablet",
+    price: 199,
+    stock: 10,
+    category: "keystone",
+    features: ["304 stainless steel", "Fire resistant (1399°C)", "Waterproof", "Supports 12/18/24 words", "5 secure screws", "BIP39 compatible"]
+  },
+  {
+    id: "keystone-tablet-plus",
+    name: "Keystone Tablet Plus",
+    price: 280,
+    stock: 8,
+    category: "keystone",
+    features: ["Premium 304 steel", "Fire resistant (1399°C)", "Waterproof", "Individual letter slots", "17 secure screws", "Maximum security design"]
   }
 ];
 
@@ -53,20 +150,11 @@ export default function Compare() {
   const products = COMPARE_PRODUCTS;
   const productsLoading = false;
 
-
-
-  // Filter only main wallet products (exclude accessories and variants)
-  const walletProducts = Array.isArray(products) ? products.filter(p =>
-    ['tangem', 'onekey', 'keystone'].includes(p.category) &&
-    !p.name?.toLowerCase().includes('bundle') &&
-    !p.name?.toLowerCase().includes('backup')
-  ) : [];
-
   // Group products by brand
   const productsByBrand = {
-    tangem: walletProducts.filter(p => p.category === 'tangem'),
-    onekey: walletProducts.filter(p => p.category === 'onekey'),
-    keystone: walletProducts.filter(p => p.category === 'keystone')
+    tangem: products.filter(p => p.category === 'tangem'),
+    onekey: products.filter(p => p.category === 'onekey'),
+    keystone: products.filter(p => p.category === 'keystone')
   };
 
   const toggleProduct = (productId) => {
@@ -77,10 +165,8 @@ export default function Compare() {
     }
   };
 
-
-
   const compareProducts = selectedProducts
-    .map(id => Array.isArray(products) ? products.find(p => p.id === id) : null)
+    .map(id => products.find(p => p.id === id))
     .filter(Boolean);
 
   const comparisonFeatures = [
@@ -107,7 +193,7 @@ export default function Compare() {
       {!productsLoading && (
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6">Select Wallets to Compare</h2>
-          
+
           {Object.entries(productsByBrand).map(([brand, brandProducts]) => (
             brandProducts.length > 0 && (
               <div key={brand} className="mb-6">
@@ -140,7 +226,6 @@ export default function Compare() {
                                   RM {product.price?.toFixed(2)}
                                 </span>
                               </div>
-
                             </div>
                           </div>
                         </CardContent>
@@ -162,7 +247,7 @@ export default function Compare() {
           className="mb-12"
         >
           <h2 className="text-2xl font-bold text-white mb-6">Comparison</h2>
-          
+
           <div className="overflow-x-auto">
             <div className="glass-card rounded-xl border-[#00ffc6]/20 p-6">
               <div className="grid gap-6" style={{ gridTemplateColumns: `200px repeat(${compareProducts.length}, 1fr)` }}>
@@ -170,7 +255,7 @@ export default function Compare() {
                 <div></div>
                 {compareProducts.map((product) => (
                   <div key={product.id} className="text-center">
-                    <h3 className="font-bold text-white mb-2">{product.name}</h3>
+                    <h3 className="font-bold text-white mb-2 text-sm">{product.name}</h3>
                     <Button
                       onClick={() => toggleProduct(product.id)}
                       variant="ghost"
@@ -179,18 +264,6 @@ export default function Compare() {
                     >
                       <X className="w-4 h-4" />
                     </Button>
-                  </div>
-                ))}
-
-                {/* Product Images */}
-                <div className="font-bold text-[#00ffc6]">Product</div>
-                {compareProducts.map((product) => (
-                  <div key={product.id} className="bg-[#0b2221] rounded-lg p-3 flex items-center justify-center min-h-[120px]">
-                    {product.image_url ? (
-                      <img src={product.image_url} alt={product.name} className="max-h-24 object-contain" />
-                    ) : (
-                      <Shield className="w-12 h-12 text-[#00ffc6] opacity-50" />
-                    )}
                   </div>
                 ))}
 
@@ -215,7 +288,7 @@ export default function Compare() {
                   <div key={product.id} className="bg-[#0b2221] rounded-lg p-3">
                     {product.features && product.features.length > 0 ? (
                       <ul className="space-y-2">
-                        {product.features.slice(0, 5).map((feature, idx) => (
+                        {product.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start gap-2 text-sm text-[#c6fff0]">
                             <CheckCircle className="w-4 h-4 text-[#00ffc6] mt-0.5 flex-shrink-0" />
                             <span>{feature}</span>
@@ -258,7 +331,7 @@ export default function Compare() {
                       </Link>
                     ) : (
                       <Link to={createPageUrl("Keystone")}>
-                        <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full">
+                        <Button className="bg-blue-500 hover:bg-blue-600 text-white w-full">
                           <ShoppingCart className="w-4 h-4 mr-2" />
                           View
                         </Button>
@@ -293,7 +366,7 @@ export default function Compare() {
           <h3 className="text-2xl font-bold text-white mb-6">Quick Summary</h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-bold text-[#00ffc6] mb-3">💰 Best Value</h4>
+              <h4 className="font-bold text-[#00ffc6] mb-3">Best Value</h4>
               <p className="text-white">
                 {compareProducts.sort((a, b) => (a.price || 0) - (b.price || 0))[0]?.name}
                 <span className="text-[#bfeee0] ml-2">
@@ -303,7 +376,7 @@ export default function Compare() {
             </div>
 
             <div>
-              <h4 className="font-bold text-[#00ffc6] mb-3">📦 Most Features</h4>
+              <h4 className="font-bold text-[#00ffc6] mb-3">Most Features</h4>
               <p className="text-white">
                 {compareProducts.sort((a, b) => (b.features?.length || 0) - (a.features?.length || 0))[0]?.name}
                 <span className="text-[#bfeee0] ml-2">
@@ -311,12 +384,9 @@ export default function Compare() {
                 </span>
               </p>
             </div>
-
           </div>
         </motion.div>
       )}
-
-
     </div>
   );
 }
