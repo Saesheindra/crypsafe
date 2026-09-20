@@ -73,6 +73,58 @@ const idealForKeystone = [
   "Anyone replacing paper seed phrase backup"
 ];
 
+// Hardcoded Keystone products
+const KEYSTONE_PRODUCTS = [
+  {
+    id: "keystone-3-pro",
+    name: "Keystone 3 Pro",
+    description: "Premium air-gapped hardware wallet with 4-inch touchscreen, triple secure element chips, and fingerprint sensor. Ultimate security for serious crypto holders.",
+    price: 500,
+    stock: 5,
+    popular: false,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_keystone-3-pro.png",
+    features: [
+      "4-inch IPS touchscreen display",
+      "Triple secure element chips (EAL5+)",
+      "Fingerprint biometric authentication",
+      "100% air-gapped — no WiFi, Bluetooth, or USB data",
+      "PCI anti-tamper protection"
+    ]
+  },
+  {
+    id: "keystone-tablet",
+    name: "Keystone Tablet",
+    description: "Indestructible steel seed phrase backup. Withstands fire up to 1399°C, water, and corrosion. Compatible with all BIP39 wallets.",
+    price: 199,
+    stock: 10,
+    popular: false,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_keystone-tablet.png",
+    features: [
+      "304 stainless steel construction",
+      "Fire resistant up to 1399°C",
+      "Waterproof & corrosion resistant",
+      "Supports 12/18/24 word seed phrases",
+      "Works with any BIP39 wallet"
+    ]
+  },
+  {
+    id: "keystone-tablet-plus",
+    name: "Keystone Tablet Plus",
+    description: "Premium steel backup with enhanced capacity. Stores up to 24 words with improved engraving system. Maximum protection for your seed phrase.",
+    price: 280,
+    stock: 8,
+    popular: true,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_keystone-tablet-plus.png",
+    features: [
+      "Premium 304 stainless steel",
+      "Enhanced engraving system",
+      "Supports up to 24 word phrases",
+      "Includes letter stamping kit",
+      "100+ years durability"
+    ]
+  }
+];
+
 export default function Keystone() {
   const [isCreatingCheckout, setIsCreatingCheckout] = React.useState({});
   const [cart, setCart] = useState([]);
@@ -388,29 +440,8 @@ export default function Keystone() {
           Choose Your <span className="text-blue-400">Steel Backup</span>
         </h2>
 
-        {isLoading ? (
-          <div className="grid md:grid-cols-2 gap-6">
-            {[1, 2].map((i) => (
-              <Card key={i} className="glass-card border-[#00ffc6]/20">
-                <CardHeader>
-                  <Skeleton className="h-48 w-full rounded-lg" />
-                </CardHeader>
-                <CardContent>
-                  <Skeleton className="h-6 w-3/4 mb-2" />
-                  <Skeleton className="h-4 w-full mb-4" />
-                  <Skeleton className="h-10 w-full" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : !Array.isArray(products) || products.length === 0 ? (
-          <div className="text-center py-20">
-            <Package className="w-16 h-16 mx-auto mb-4 text-[#00ffc6] opacity-50" />
-            <p className="text-xl text-[#bfeee0]">No Keystone products available at the moment</p>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 gap-6">
-            {products.map((product, index) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {KEYSTONE_PRODUCTS.map((product, index) => {
               const isPlus = product.name?.includes("Plus");
               return (
                 <motion.div
@@ -513,8 +544,7 @@ export default function Keystone() {
                 </motion.div>
               );
             })}
-          </div>
-        )}
+        </div>
       </motion.div>
 
       {/* Compatible with All Wallets */}

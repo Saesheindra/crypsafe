@@ -44,6 +44,66 @@ const idealFor = [
   "Users who prefer desktop + mobile flexibility"
 ];
 
+// Hardcoded OneKey products
+const ONEKEY_PRODUCTS = [
+  {
+    id: "onekey-classic-1s-pure",
+    name: "OneKey Classic 1S Pure",
+    description: "Ultra-affordable entry-level hardware wallet with essential security for crypto beginners.",
+    price: 310,
+    stock: 10,
+    popular: false,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_onekeyclassic1s.jpg",
+    features: [
+      "EAL 6+ Secure Element Chip",
+      "Bluetooth & USB-C connectivity",
+      "Security Key functionality"
+    ]
+  },
+  {
+    id: "onekey-pro-white",
+    name: "OneKey Pro - White",
+    description: "Premium open-source hardware wallet with 3.5\" touchscreen, multi-chain support, and air-gapped security.",
+    price: 1100,
+    stock: 5,
+    popular: false,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_onekey-pro-white.png",
+    features: [
+      "EAL 6+ Secure Element Chip",
+      "Air-gapped Signing",
+      "Fingerprint sensor"
+    ]
+  },
+  {
+    id: "onekey-pro-black",
+    name: "OneKey Pro - Black",
+    description: "Premium open-source hardware wallet with 3.5\" touchscreen, multi-chain support, and air-gapped security.",
+    price: 1100,
+    stock: 5,
+    popular: false,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_onekey-pro-black.png",
+    features: [
+      "EAL 6+ Secure Element Chip",
+      "Air-gapped Signing",
+      "Fingerprint sensor"
+    ]
+  },
+  {
+    id: "onekey-classic-1s",
+    name: "OneKey Classic 1S",
+    description: "Affordable open-source hardware wallet with essential security features and wide crypto support.",
+    price: 400,
+    stock: 10,
+    popular: true,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/7ccc2c_onekey-classic-1s.jpg",
+    features: [
+      "EAL 6+ Secure Element Chip",
+      "Bluetooth & USB-C connectivity",
+      "Security Key functionality"
+    ]
+  }
+];
+
 const ProductCard = ({ product, index, addToCart }) => {
   const [selectedVariantId, setSelectedVariantId] = useState(() => {
     return product.variants && product.variants.length > 0 ? product.variants[0].id : null;
@@ -439,45 +499,16 @@ export default function OneKey() {
           Available <span className="text-[#00ffc6]">Products</span>
         </h2>
 
-        {isLoading ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="glass-card border-[#00ffc6]/20">
-                <CardHeader>
-                  <Skeleton className="h-48 w-full rounded-lg" />
-                </CardHeader>
-                <CardContent>
-                  <Skeleton className="h-6 w-3/4 mb-2" />
-                  <Skeleton className="h-4 w-full mb-4" />
-                  <Skeleton className="h-10 w-full" />
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        ) : !Array.isArray(products) || products.length === 0 ? (
-          <div className="text-center py-20">
-            <Package className="w-16 h-16 mx-auto mb-4 text-[#00ffc6] opacity-50" />
-            <p className="text-xl text-[#bfeee0] mb-4">OneKey products coming soon!</p>
-            <p className="text-[#c6fff0]">Contact us for pre-orders or more information.</p>
-            <a href="https://wa.me/601166736549" target="_blank" rel="noopener noreferrer">
-              <Button className="mt-6 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Chat on WhatsApp
-              </Button>
-            </a>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product, index) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                index={index}
-                addToCart={addToCart}
-              />
-            ))}
-          </div>
-        )}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {ONEKEY_PRODUCTS.map((product, index) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              index={index}
+              addToCart={addToCart}
+            />
+          ))}
+        </div>
       </motion.div>
 
       {/* Why Buy from CrypSafe */}
