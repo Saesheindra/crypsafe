@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Shield, CheckCircle, ShoppingCart, Flame, Droplet, Zap, Package, MessageCircle, AlertTriangle, CreditCard, Loader2 } from "lucide-react";
+import { Shield, CheckCircle, ShoppingCart, Flame, Droplet, Zap, Package, MessageCircle, AlertTriangle, CreditCard, Loader2, Play, Lock, Globe, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Link } from "react-router-dom";
@@ -36,6 +36,41 @@ const keystoneFeatures = [
     description: "Works with all crypto wallets (Tangem, Ledger, MetaMask, etc.)",
     color: "from-purple-400 to-purple-600"
   }
+];
+
+const keystoneWhyChoose = [
+  {
+    icon: Flame,
+    title: "Extreme Durability",
+    description: "304 stainless steel withstands fire up to 1399°C, water damage, and corrosion for decades.",
+    color: "from-orange-400 to-red-600"
+  },
+  {
+    icon: Lock,
+    title: "Ultimate Backup Security",
+    description: "Physical engraving ensures your seed phrase can never be deleted, corrupted, or hacked.",
+    color: "from-blue-400 to-blue-600"
+  },
+  {
+    icon: Globe,
+    title: "Universal BIP39 Support",
+    description: "Compatible with all major wallets — Ledger, Trezor, Tangem, MetaMask, and more.",
+    color: "from-purple-400 to-purple-600"
+  },
+  {
+    icon: Clock,
+    title: "Generational Storage",
+    description: "Pass down your crypto legacy. Steel backup lasts 100+ years unlike paper that degrades.",
+    color: "from-[#00ffc6] to-[#00d9a8]"
+  }
+];
+
+const idealForKeystone = [
+  "Long-term crypto holders who need permanent backup",
+  "Users with hardware wallets (Ledger, Trezor, Tangem)",
+  "Privacy-conscious individuals avoiding digital storage",
+  "Crypto investors planning generational wealth transfer",
+  "Anyone replacing paper seed phrase backup"
 ];
 
 export default function Keystone() {
@@ -194,11 +229,94 @@ export default function Keystone() {
         </div>
       </motion.div>
 
-      {/* Why Steel Backup Section */}
+      {/* Keystone Video Section */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
+        className="glass-card rounded-2xl p-6 mb-12 border-2 border-blue-400/30 glow-effect"
+      >
+        <div className="flex items-center gap-3 mb-4">
+          <Play className="w-8 h-8 text-blue-400" />
+          <h2 className="text-2xl font-bold text-white">See Keystone in Action</h2>
+        </div>
+        <p className="text-[#c6fff0] mb-6">Watch how Keystone steel backup provides indestructible protection for your seed phrase — surviving fire, water, and the test of time.</p>
+
+        <div className="aspect-video w-full rounded-xl overflow-hidden shadow-2xl bg-black">
+          <video
+            className="w-full h-full object-contain"
+            controls
+            autoPlay={false}
+            muted={true}
+            loop={false}
+            preload="metadata"
+          >
+            <source src="https://i.imgur.com/kFz8QcM.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </motion.div>
+
+      {/* Why Choose Keystone Features */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15 }}
+        className="mb-12"
+      >
+        <h2 className="text-3xl font-bold mb-8 text-center text-white">
+          Why Choose <span className="text-blue-400">Keystone?</span>
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {keystoneWhyChoose.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
+              >
+                <Card className="glass-card h-full hover:glow-effect transition-all duration-300 border-blue-400/20">
+                  <CardContent className="p-6">
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4`}>
+                      <Icon className="w-7 h-7 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 text-white">{feature.title}</h3>
+                    <p className="text-[#c6fff0]">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      {/* Ideal For Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.25 }}
+        className="glass-card rounded-2xl p-8 mb-12 border-2 border-blue-400/30 glow-effect"
+      >
+        <h2 className="text-3xl font-bold mb-6 text-center text-white">
+          <span className="text-blue-400">Ideal For</span>
+        </h2>
+        <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+          {idealForKeystone.map((item, index) => (
+            <div key={index} className="flex items-start gap-3 p-4 rounded-lg bg-[#0b2221]">
+              <CheckCircle className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+              <p className="text-[#c6fff0]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Why Steel Backup Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
         className="glass-card rounded-2xl p-8 mb-12 border-2 border-yellow-500/30 glow-effect"
       >
         <div className="text-center mb-6">
@@ -263,7 +381,7 @@ export default function Keystone() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
+        transition={{ delay: 0.35 }}
         className="mb-12"
       >
         <h2 className="text-3xl font-bold mb-8 text-center text-white">
@@ -403,7 +521,7 @@ export default function Keystone() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
+        transition={{ delay: 0.4 }}
         className="glass-card rounded-2xl p-8 mb-12 border-[#00ffc6]/20"
       >
         <h3 className="text-2xl font-bold mb-6 text-center text-white">
@@ -435,8 +553,8 @@ export default function Keystone() {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="glass-card rounded-2xl p-8 border-2 border-green-500/30 glow-effect"
+        transition={{ delay: 0.45 }}
+        className="glass-card rounded-2xl p-8 mb-12 border-2 border-green-500/30 glow-effect"
       >
         <div className="text-center">
           <h3 className="text-2xl font-bold mb-4 text-white">💰 Save with Bundle Packages</h3>
@@ -452,12 +570,36 @@ export default function Keystone() {
         </div>
       </motion.div>
 
-      {/* CTA */}
+      {/* Why Buy from CrypSafe */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="text-center mt-12"
+        className="glass-card rounded-2xl p-8 mb-12 glow-effect"
+      >
+        <h3 className="text-2xl font-bold mb-4 text-blue-400">Why Buy from CrypSafe?</h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div>
+            <h4 className="font-bold mb-2 text-white">✅ Official Keystone Reseller</h4>
+            <p className="text-sm text-[#bfeee0]">Authentic products sold directly with full manufacturer warranty</p>
+          </div>
+          <div>
+            <h4 className="font-bold mb-2 text-white">🚀 Local Support & Fast Delivery</h4>
+            <p className="text-sm text-[#bfeee0]">Support in Bahasa Malaysia & English. Ships from Malaysia (2-6 business days)</p>
+          </div>
+          <div>
+            <h4 className="font-bold mb-2 text-white">💳 Flexible Payment</h4>
+            <p className="text-sm text-[#bfeee0]">FPX, Credit Card, or Crypto payments accepted</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.55 }}
+        className="text-center"
       >
         <p className="text-[#bfeee0] mb-4">Have questions about steel backup?</p>
         <a href="https://wa.me/601166736549" target="_blank" rel="noopener noreferrer">
