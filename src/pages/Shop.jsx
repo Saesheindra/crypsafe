@@ -14,9 +14,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import ShoppingCartComponent from "../components/shop/ShoppingCart"; // Renamed to avoid conflict with lucide-react icon
 import ProductFilters from "../components/shop/ProductFilters";
 
-// Static product data - sourced from crypsafe.com.my
+// Static product data - sourced from crypsafe.com.my (ordered to match production site exactly)
 const STATIC_PRODUCTS = [
-  // Keystone Products
+  // Row 1: Keystone 3 Pro | OneKey Classic 1S Pure
   {
     id: "keystone-3-pro",
     name: "Keystone 3 Pro",
@@ -27,6 +27,61 @@ const STATIC_PRODUCTS = [
     image_url: "https://media.base44.com/images/public/68f88f2cb7165a70a22ee871/e7ca46336_Screenshot2026-09-07211819.png",
     features: ["100% Open Source", "Air-Gapped QR Code", "4-Inch Touchscreen"]
   },
+  {
+    id: "onekey-classic-1s-pure",
+    name: "OneKey Classic 1S Pure",
+    description: "Ultra-affordable entry-level hardware wallet with essential security for crypto beginners",
+    price: 310,
+    stock: 8,
+    category: "onekey",
+    image_url: "https://i.imgur.com/KzoBv6J.png",
+    features: ["EAL 6+ Secure Element Chip", "Bluetooth & USB-C connectivity", "Security Key functionality"]
+  },
+  // Row 2: OneKey Pro - Black | OneKey Classic 1S
+  {
+    id: "onekey-pro-black",
+    name: "OneKey Pro - Black",
+    description: "Premium open-source hardware wallet with 3.5\" touchscreen, multi-chain support, and air-gapped security",
+    price: 1100,
+    stock: 3,
+    category: "onekey",
+    image_url: "https://i.imgur.com/5aN1PSF.png",
+    features: ["EAL 6+ Secure Element Chip", "Air-gapped Signing", "Fingerprint sensor"]
+  },
+  {
+    id: "onekey-classic-1s",
+    name: "OneKey Classic 1S",
+    description: "Affordable open-source hardware wallet with essential security features and wide crypto support",
+    price: 400,
+    stock: 5,
+    category: "onekey",
+    popular: true,
+    image_url: "https://i.imgur.com/J0NoiXJ.jpeg",
+    features: ["EAL 6+ Secure Element Chip", "Bluetooth & USB-C connectivity", "Security Key functionality"]
+  },
+  // Row 3: OneKey Pro - White | Tangem Electra Sea
+  {
+    id: "onekey-pro-white",
+    name: "OneKey Pro - White",
+    description: "Premium open-source hardware wallet with 3.5\" touchscreen, multi-chain support, and air-gapped security",
+    price: 1100,
+    stock: 3,
+    category: "onekey",
+    image_url: "https://i.imgur.com/Eeq97cA.png",
+    features: ["EAL 6+ Secure Element Chip", "Air-gapped Signing", "Fingerprint sensor"]
+  },
+  {
+    id: "tangem-3-card-electra-sea",
+    name: "Tangem Wallet (3-Card Set) - Electra Sea- Limited Edition",
+    description: "Premium 3-card backup set in stunning Electra Sea color. Mesmerizing turquoise and electric blue tones inspired by tropical waters. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
+    price: 350,
+    stock: 0,
+    category: "tangem",
+    popular: true,
+    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/3de70dd7c_Screenshot2025-11-06225407sealimited.png",
+    features: ["3 backup cards included - lose 1, still have 2", "Electra Sea color - vibrant turquoise and electric blue", "No seed phrases to write down or remember"]
+  },
+  // Remaining Keystone Products
   {
     id: "keystone-tablet",
     name: "Keystone Tablet",
@@ -49,49 +104,7 @@ const STATIC_PRODUCTS = [
     image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/ab8ce4ea1_ketstonetabletplusimage.png",
     features: ["Supports 12/18/24 word seed phrases", "Individual slot for each letter (most secure)", "Fire resistant up to 1399°C"]
   },
-  // OneKey Products
-  {
-    id: "onekey-classic-1s-pure",
-    name: "OneKey Classic 1S Pure",
-    description: "Ultra-affordable entry-level hardware wallet with essential security for crypto beginners",
-    price: 310,
-    stock: 8,
-    category: "onekey",
-    image_url: "https://i.imgur.com/KzoBv6J.png",
-    features: ["EAL 6+ Secure Element Chip", "Bluetooth & USB-C connectivity", "Security Key functionality"]
-  },
-  {
-    id: "onekey-classic-1s",
-    name: "OneKey Classic 1S",
-    description: "Affordable open-source hardware wallet with essential security features and wide crypto support",
-    price: 400,
-    stock: 5,
-    category: "onekey",
-    popular: true,
-    image_url: "https://i.imgur.com/J0NoiXJ.jpeg",
-    features: ["EAL 6+ Secure Element Chip", "Bluetooth & USB-C connectivity", "Security Key functionality"]
-  },
-  {
-    id: "onekey-pro-black",
-    name: "OneKey Pro - Black",
-    description: "Premium open-source hardware wallet with 3.5\" touchscreen, multi-chain support, and air-gapped security",
-    price: 1100,
-    stock: 3,
-    category: "onekey",
-    image_url: "https://i.imgur.com/5aN1PSF.png",
-    features: ["EAL 6+ Secure Element Chip", "Air-gapped Signing", "Fingerprint sensor"]
-  },
-  {
-    id: "onekey-pro-white",
-    name: "OneKey Pro - White",
-    description: "Premium open-source hardware wallet with 3.5\" touchscreen, multi-chain support, and air-gapped security",
-    price: 1100,
-    stock: 3,
-    category: "onekey",
-    image_url: "https://i.imgur.com/Eeq97cA.png",
-    features: ["EAL 6+ Secure Element Chip", "Air-gapped Signing", "Fingerprint sensor"]
-  },
-  // Tangem Products
+  // Remaining Tangem Products
   {
     id: "tangem-3-card-black",
     name: "Tangem Wallet (3-Card Set) \"Classic Black\"",
@@ -163,17 +176,6 @@ const STATIC_PRODUCTS = [
     popular: true,
     image_url: "https://i.imgur.com/mms7jCX.png",
     features: ["Wearable NFC ring", "Water-resistant", "Premium titanium"]
-  },
-  {
-    id: "tangem-3-card-electra-sea",
-    name: "Tangem Wallet (3-Card Set) - Electra Sea- Limited Edition",
-    description: "Premium 3-card backup set in stunning Electra Sea color. Mesmerizing turquoise and electric blue tones inspired by tropical waters. Each set includes 3 NFC cards that work together - if you lose one card, you still have 2 backups.",
-    price: 350,
-    stock: 0,
-    category: "tangem",
-    popular: true,
-    image_url: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68f88f2cb7165a70a22ee871/3de70dd7c_Screenshot2025-11-06225407sealimited.png",
-    features: ["3 backup cards included - lose 1, still have 2", "Electra Sea color - vibrant turquoise and electric blue", "No seed phrases to write down or remember"]
   },
   {
     id: "tangem-3-card-spring-bloom",
