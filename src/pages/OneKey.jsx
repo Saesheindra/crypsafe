@@ -302,10 +302,17 @@ export default function OneKey() {
     }
   };
 
-  const { data: products, isLoading } = useQuery({
+  const { data: products = [], isLoading } = useQuery({
     queryKey: ['onekey-products'],
-    queryFn: () => base44.entities.Product.filter({ category: 'onekey' }),
-    initialData: [],
+    queryFn: async () => {
+      try {
+        const result = await base44.entities.Product.filter({ category: 'onekey' });
+        return Array.isArray(result) ? result : [];
+      } catch (error) {
+        console.error('Failed to fetch OneKey products:', error);
+        return [];
+      }
+    },
   });
 
   return (
@@ -447,7 +454,7 @@ export default function OneKey() {
               </Card>
             ))}
           </div>
-        ) : products.length === 0 ? (
+        ) : !Array.isArray(products) || products.length === 0 ? (
           <div className="text-center py-20">
             <Package className="w-16 h-16 mx-auto mb-4 text-[#00ffc6] opacity-50" />
             <p className="text-xl text-[#bfeee0] mb-4">OneKey products coming soon!</p>
