@@ -24,7 +24,7 @@ const STATIC_PRODUCTS = [
     price: 500,
     stock: 10,
     category: "keystone",
-    image_url: "https://i.imgur.com/8QR8rHd.png",
+    image_url: "https://cdn.shopify.com/s/files/1/0029/3175/3060/files/3pro.png?v=1728372157",
     features: ["100% Open Source", "Air-Gapped QR Code", "4-Inch Touchscreen"]
   },
   {
@@ -34,7 +34,7 @@ const STATIC_PRODUCTS = [
     price: 310,
     stock: 8,
     category: "onekey",
-    image_url: "https://i.imgur.com/KzoBv6J.png",
+    image_url: "https://walletinsights.io/_assets/collections/hardware-wallets/onekey-classic-1s-pure-68141dec.webp",
     features: ["EAL 6+ Secure Element Chip", "Bluetooth & USB-C connectivity", "Security Key functionality"]
   },
   // Row 2: OneKey Pro - Black | OneKey Classic 1S
